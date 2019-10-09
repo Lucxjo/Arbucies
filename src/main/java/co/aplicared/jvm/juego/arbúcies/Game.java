@@ -2,6 +2,7 @@ package co.aplicared.jvm.juego.arbúcies;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
     public static int width = 300;
@@ -52,7 +53,19 @@ public class Game extends Canvas implements Runnable {
     @Override
     public void run() {
         while (isRunning) {
-            //
+            tick();
+            render();
+        }
+    }
+
+    public void tick() {
+    }
+
+    public void render() {
+        BufferStrategy bs = getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
         }
     }
 }
