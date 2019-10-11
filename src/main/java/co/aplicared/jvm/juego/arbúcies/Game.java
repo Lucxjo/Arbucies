@@ -3,6 +3,8 @@ package co.aplicared.jvm.juego.arbúcies;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 public class Game extends Canvas implements Runnable {
     public static int width = 300;
@@ -15,6 +17,9 @@ public class Game extends Canvas implements Runnable {
     private JFrame frame;
 
     private boolean isRunning = false;
+
+    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
@@ -67,5 +72,10 @@ public class Game extends Canvas implements Runnable {
             createBufferStrategy(3);
             return;
         }
+        Graphics g = bs.getDrawGraphics();
+        g.setColor(Color.CYAN);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.dispose();
+        bs.show();
     }
 }
