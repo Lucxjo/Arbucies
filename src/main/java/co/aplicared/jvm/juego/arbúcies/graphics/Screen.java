@@ -11,6 +11,10 @@ public class Screen {
         pixels = new int[_width * _height];
     }
 
+    public void clear() {
+        for (int i = 0; i < pixels.length; i++) pixels[i] = 0;
+    }
+
     public void render() {
         for (int y = 0; y < _height; y++) {
             for (int x = 0; x < _width; x++) {
