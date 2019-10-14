@@ -1,4 +1,4 @@
-package co.aplicared.jvm.juego.arbúcies.graphics
+package co.aplicared.jvm.juego.arbucies.graphics
 
 import kotlin.random.Random
 

@@ -4,7 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
-group 'co.aplicared.jvm.juego.arbúcies'
+group 'co.aplicared.jvm.juego.arbucies'
 version 'a0.01'
 
 sourceCompatibility = 1.8
@@ -27,6 +27,6 @@ compileTestKotlin {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'co.aplicared.jvm.juego.arbúcies.Game'
+        attributes 'Main-Class': 'co.aplicared.jvm.juego.arbucies.GameKT'
     }
 }
