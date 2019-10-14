@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies;
 
+
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.image.DataBufferInt;
 
 public class Game extends Canvas implements Runnable {
     public static int width = 300;
-    public static int height = width / 16 * 9;
+    public static int height = width / 16 * 10;
     public static int scale = 3;
 
     public final static String title = "Arbúcies";
@@ -64,10 +65,36 @@ public class Game extends Canvas implements Runnable {
 
     @Override
     public void run() {
+        long lastTime = System.nanoTime();
+        long timer = System.currentTimeMillis();
+        final double ns = 1000000000.0 / 60.0;
+        double delta = 0;
+        int frames = 0;
+        int ticks = 0;
+
         while (_isRunning) {
-            tick();
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            lastTime = now;
+
+            while (delta >= 1) {
+                tick();
+                ticks++;
+                delta--;
+            }
+
             render();
+            frames++;
+
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                _frame.setTitle(title + " || " + "TPS: " + ticks + " | " + "FPS: " + frames);
+                ticks = 0;
+                frames = 0;
+            }
         }
+
+        stop();
     }
 
     public void tick() {
@@ -83,7 +110,7 @@ public class Game extends Canvas implements Runnable {
         _screen.clear();
         _screen.render();
 
-        System.arraycopy(_screen.pixels, 0, _pixels, 0, _pixels.length);
+        System.arraycopy(_screen.getPixels(), 0, _pixels, 0, _pixels.length);
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(_image, 0, 0, getWidth(), getHeight(), null);
