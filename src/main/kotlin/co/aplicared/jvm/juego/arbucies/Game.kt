@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbucies
 
+import co.aplicared.jvm.juego.arbucies.control.Keyboard
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
 import java.awt.Canvas
 import java.awt.Dimension
@@ -7,7 +8,7 @@ import java.awt.image.BufferedImage
 import java.awt.image.DataBufferInt
 import javax.swing.JFrame
 
-class GameKT : Runnable, Canvas() {
+class Game : Runnable, Canvas() {
 
     companion object {
         val gWidth = 300
@@ -18,7 +19,7 @@ class GameKT : Runnable, Canvas() {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            val game = GameKT()
+            val game = Game()
             game._frame.isResizable = false
             game._frame.title = title
             game._frame.add(game)
@@ -38,14 +39,22 @@ class GameKT : Runnable, Canvas() {
     private var _frame: JFrame
     private var _screen: Screen
 
+    private var _key: Keyboard
+
     private val _image = BufferedImage(gWidth, gHeight, BufferedImage.TYPE_INT_RGB)
     private val _pixels = (_image.raster.dataBuffer as DataBufferInt).data
+
+    private var xPos = 0
+    private var yPos = 0
 
     init {
         val size = Dimension(gWidth * scale, gHeight * scale)
         _screen = Screen(gWidth, gHeight)
         _frame = JFrame()
         preferredSize = size
+        _key = Keyboard()
+
+        addKeyListener(_key)
     }
 
     override fun run(): Unit {
@@ -95,7 +104,9 @@ class GameKT : Runnable, Canvas() {
         }
     }
 
-    fun tick() {}
+    fun tick() {
+        _key.update()
+    }
 
     fun render() {
         val bs = bufferStrategy

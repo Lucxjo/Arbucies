@@ -27,6 +27,6 @@ compileTestKotlin {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'co.aplicared.jvm.juego.arbucies.GameKT'
+        attributes 'Main-Class': 'co.aplicared.jvm.juego.arbucies.Game'
     }
 }
