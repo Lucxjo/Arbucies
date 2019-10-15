@@ -106,6 +106,11 @@ class Game : Runnable, Canvas() {
 
     fun tick() {
         _key.update()
+
+        if (_key.up) yPos--
+        if (_key.down) yPos++
+        if (_key.left) xPos--
+        if (_key.right) xPos++
     }
 
     fun render() {
@@ -116,7 +121,7 @@ class Game : Runnable, Canvas() {
         }
 
         _screen.clear()
-        _screen.render()
+        _screen.render(xPos, yPos)
 
         System.arraycopy(_screen.pixels, 0, _pixels, 0, _pixels.size)
 
