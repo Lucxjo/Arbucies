@@ -23,10 +23,10 @@ class Screen(private val _width: Int, private val _height: Int) {
     fun render(xPos: Int, yPos: Int) {
         for (y in 0 until _height) {
             val yy = y + yPos
-            //if (y < 0 || y >= _height) break
+            if (y < 0 || y >= _height) break
             for (x in 0 until _width) {
                 val xx = x + xPos
-                //if (x < 0 || x >= _width) break
+                if (x < 0 || x >= _width) break
                 val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
                 pixels[x + y * _width] = tiles[tileIndex]
             }
