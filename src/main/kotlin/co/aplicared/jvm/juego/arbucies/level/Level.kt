@@ -30,5 +30,9 @@ open class Level {
     }
 
     fun render(xScroll: Int, yScroll: Int, screen: Screen) {
+        val x0 = xScroll shr 4
+        val x1 = (xScroll + screen.width) shr 4
+        val y0 = yScroll shr 4
+        val y1 = (yScroll + screen.height) shr 4
     }
 }
