@@ -64,6 +64,7 @@ class Game : Runnable, Canvas() {
         var delta = 0.0
         var frames = 0
         var ticks = 0
+        requestFocus()
 
         while (_isRunning) {
             val now = System.nanoTime()
