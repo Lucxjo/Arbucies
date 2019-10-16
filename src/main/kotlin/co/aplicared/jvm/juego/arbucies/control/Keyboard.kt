@@ -5,7 +5,7 @@ import java.awt.event.KeyListener
 
 class Keyboard : KeyListener {
 
-    private var keys = BooleanArray(128)
+    private var keys = BooleanArray(256)
 
     var up: Boolean = false
     var down: Boolean = false
