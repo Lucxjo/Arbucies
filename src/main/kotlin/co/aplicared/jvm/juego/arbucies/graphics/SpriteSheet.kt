@@ -4,8 +4,12 @@ import java.awt.image.BufferedImage
 import java.io.IOException
 import javax.imageio.ImageIO
 
-class SpriteSheet(val path: String, val size: Int) {
+class SpriteSheet(private val path: String, val size: Int) {
     var pixels = IntArray(size * size)
+
+    companion object {
+        val terrain = SpriteSheet("/textures/TerrainSS.png", 256)
+    }
 
     init {
         load()

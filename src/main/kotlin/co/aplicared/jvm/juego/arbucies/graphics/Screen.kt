@@ -10,6 +10,8 @@ class Screen(private val _width: Int, private val _height: Int) {
 
     private var random = Random
 
+    private var sprite = Sprite
+
     init {
         for (i in 0 until mapSize * mapSize) {
             tiles[i] = random.nextInt(0xFFFFFF)
@@ -28,7 +30,8 @@ class Screen(private val _width: Int, private val _height: Int) {
                 val xx = x + xPos
                 if (x < 0 || x >= _width) break
                 val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
-                pixels[x + y * _width] = tiles[tileIndex]
+                pixels[x + y * _width] =
+                    sprite.grass.pixels[(xx and 15) + (yy and 15) * sprite.grass.size] //tiles[tileIndex]
             }
         }
     }

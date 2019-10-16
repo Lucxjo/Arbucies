@@ -5,6 +5,10 @@ class Sprite(val size: Int, xCoord: Int, yCoord: Int, val sheet: SpriteSheet) {
     var xCoord: Int = xCoord * size
     var yCoord: Int = yCoord * size
 
+    companion object {
+        val grass = Sprite(16, 0, 0, SpriteSheet.terrain)
+    }
+
     init {
         load()
     }
