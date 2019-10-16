@@ -2,10 +2,10 @@ package co.aplicared.jvm.juego.arbucies.level
 
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
 
-class Level {
-    private var width: Int? = null
-    private var height: Int? = null
-    private lateinit var tiles: IntArray
+open class Level {
+    protected open var width: Int? = null
+    protected open var height: Int? = null
+    protected open lateinit var tiles: IntArray
 
     constructor(width: Int, height: Int) {
         this.width = width
@@ -18,13 +18,13 @@ class Level {
         loadLevel(path)
     }
 
-    private fun generateLevel() {
+    protected open fun generateLevel() {
         //
     }
 
-    private fun loadLevel(path: String) {}
+    protected open fun loadLevel(path: String) {}
 
-    private fun time() {}
+    protected open fun time() {}
 
     fun update() {
     }

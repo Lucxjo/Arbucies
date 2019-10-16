@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage
 import java.io.IOException
 import javax.imageio.ImageIO
 
-class SpriteSheet(private val path: String, val size: Int) {
+open class SpriteSheet(private val path: String, val size: Int) {
     var pixels = IntArray(size * size)
 
     companion object {

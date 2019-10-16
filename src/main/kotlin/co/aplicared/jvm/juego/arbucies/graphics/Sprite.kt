@@ -1,6 +1,6 @@
 package co.aplicared.jvm.juego.arbucies.graphics
 
-class Sprite(val size: Int, xCoord: Int, yCoord: Int, val sheet: SpriteSheet) {
+open class Sprite(val size: Int, xCoord: Int, yCoord: Int, val sheet: SpriteSheet) {
     var pixels: IntArray = IntArray(size * size)
     var xCoord: Int = xCoord * size
     var yCoord: Int = yCoord * size
