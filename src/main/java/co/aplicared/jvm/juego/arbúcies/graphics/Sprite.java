@@ -2,7 +2,7 @@ package co.aplicared.jvm.juego.arbúcies.graphics;
 
 public class Sprite {
     public static Sprite grassSprite = new Sprite(16, 0, 0, SpriteSheet.terrain);
-    public static Sprite voidSprite = new Sprite(16, 0xFF00FF);
+    public static Sprite voidSprite = new Sprite(16, 0x3b9eb5);
     public int size, xCoord, yCoord;
     public SpriteSheet sheet;
     public int[] pixels;

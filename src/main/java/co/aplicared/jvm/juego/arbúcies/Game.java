@@ -1,6 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies;
 
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
+import co.aplicared.jvm.juego.arbúcies.entity.mob.Player;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.Level;
 import co.aplicared.jvm.juego.arbúcies.level.RandomLevel;
@@ -26,8 +27,7 @@ public class Game extends Canvas implements Runnable {
     private Keyboard _key;
     private Level _level;
     private Screen _screen;
-
-    private int xPos, yPos;
+    private Player _player;
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
@@ -38,6 +38,7 @@ public class Game extends Canvas implements Runnable {
         _key = new Keyboard();
         _level = new RandomLevel(64, 64);
         _screen = new Screen(width, height);
+        _player = new Player(_key);
 
         addKeyListener(_key);
     }
@@ -98,24 +99,21 @@ public class Game extends Canvas implements Runnable {
         }
 
         _screen.clear();
-        _level.render(xPos, yPos, _screen);
+        _level.render(_player.x, _player.y, _screen);
 
         for (int i = 0; i < _pixels.length; i++) {
             _pixels[i] = _screen.pixels[i];
         }
 
         Graphics g = bs.getDrawGraphics();
-        g.drawImage(_image, 0, 0, width, height, null);
+        g.drawImage(_image, 0, 0, getWidth(), getHeight(), null);
         g.dispose();
         bs.show();
     }
 
     private void tick() {
         _key.update();
-        if (_key.up) yPos--;
-        if (_key.down) yPos++;
-        if (_key.left) xPos--;
-        if (_key.right) xPos++;
+        _player.update();
     }
 
     public synchronized void start() {
