@@ -3,10 +3,14 @@ package co.aplicared.jvm.juego.arbucies.graphics
 import co.aplicared.jvm.juego.arbucies.level.tile.Tile
 import kotlin.random.Random
 
-class Screen(val width: Int, val height: Int) {
+class Screen(val width: Int = 300, val height: Int = width / 16 * 10) {
     var pixels: IntArray = IntArray(height * width)
     val mapSize = 64
     val mapSizeMask = mapSize - 1
+
+    var xOffset: Int? = null
+    var yOffset: Int? = null
+
     private var tiles: IntArray = IntArray(mapSize * mapSize)
 
     private var random = Random
@@ -21,27 +25,21 @@ class Screen(val width: Int, val height: Int) {
         pixels.fill(0)
     }
 
-    fun render(xPos: Int, yPos: Int) {
-        for (y in 0 until height) {
-            val yp = y + yPos
-            if (yp < 0 || yp >= height) continue
-            for (x in 0 until width) {
-                val xp = x + xPos
-                if (xp < 0 || xp >= width) continue
-                pixels[xp + yp * width] =
-                    Sprite.grass.pixels[(x and 15) + (y and 15) * Sprite.grass.size] //tiles[tileIndex]
-            }
-        }
-    }
-
-    open fun renderTile(xPos: Int, yPos: Int, tile: Tile) {
+    fun renderTile(xPos: Int, yPos: Int, tile: Tile) {
+        val xp = xPos - (xOffset ?: 0)
+        val yp = yPos - (yOffset ?: 0)
         for (y in 0 until tile.sprite.size) {
-            val ya = y + yPos
+            val ya = y + yp
             for (x in 0 until tile.sprite.size) {
-                val xa = x + xPos
+                val xa = x + xp
                 if (xa < 0 || xa >= width || ya < 0 || ya >= height) break
                 pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.size]
             }
         }
+    }
+
+    fun setOffset(xOffset: Int, yOffset: Int) {
+        this.xOffset = xOffset
+        this.yOffset = yOffset
     }
 }

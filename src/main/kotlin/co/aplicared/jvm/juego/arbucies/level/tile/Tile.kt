@@ -9,6 +9,7 @@ open class Tile(val sprite: Sprite) {
 
     companion object {
         val grass = GrassTile(Sprite.grass)
+        val voidTile = VoidTile(Sprite.voidSprite)
     }
 
     open fun render(x: Int, y: Int, screen: Screen) {

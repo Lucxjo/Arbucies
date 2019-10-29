@@ -2,6 +2,8 @@ package co.aplicared.jvm.juego.arbucies
 
 import co.aplicared.jvm.juego.arbucies.control.Keyboard
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
+import co.aplicared.jvm.juego.arbucies.level.Level
+import co.aplicared.jvm.juego.arbucies.level.RandomLevel
 import java.awt.Canvas
 import java.awt.Dimension
 import java.awt.image.BufferedImage
@@ -39,6 +41,8 @@ class Game : Runnable, Canvas() {
     private var _frame: JFrame
     private var _screen: Screen
 
+    private var _level: Level
+
     private var _key: Keyboard
 
     private val _image = BufferedImage(gWidth, gHeight, BufferedImage.TYPE_INT_RGB)
@@ -53,6 +57,8 @@ class Game : Runnable, Canvas() {
         _frame = JFrame()
         preferredSize = size
         _key = Keyboard()
+
+        _level = RandomLevel(64, 64)
 
         addKeyListener(_key)
     }
@@ -122,7 +128,7 @@ class Game : Runnable, Canvas() {
         }
 
         _screen.clear()
-        _screen.render(xPos, yPos)
+        _level.render(xPos, yPos, _screen)
 
         System.arraycopy(_screen.pixels, 0, _pixels, 0, _pixels.size)
 
