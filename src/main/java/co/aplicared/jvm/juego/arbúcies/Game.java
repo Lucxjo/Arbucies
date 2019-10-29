@@ -48,10 +48,10 @@ public class Game extends Canvas implements Runnable {
         game._gameFrame.setTitle(title);
         game._gameFrame.add(game);
         game._gameFrame.pack();
-        game._gameFrame.requestFocus();
         game._gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game._gameFrame.setLocationRelativeTo(null);
         game._gameFrame.setVisible(true);
+        game._gameFrame.requestFocus();
 
         game.start();
     }
