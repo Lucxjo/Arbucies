@@ -6,6 +6,7 @@ import co.aplicared.jvm.juego.arbúcies.level.Level;
 import java.util.Random;
 
 public abstract class Entity {
+
     protected final Random random = new Random();
     public int x, y;
     protected Level level;
