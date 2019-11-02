@@ -1,6 +1,8 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
+import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
+import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 
 public class Player extends Mob {
 
@@ -28,6 +30,7 @@ public class Player extends Mob {
     }
 
     @Override
-    public void render() {
+    public void render(Screen screen) {
+        screen.renderPlayer(x, y, PlayerSprites.NORTH.sprite());
     }
 }

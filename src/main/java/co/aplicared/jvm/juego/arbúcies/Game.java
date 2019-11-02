@@ -88,6 +88,7 @@ public class Game extends Canvas implements Runnable {
                 frames = 0;
             }
         }
+        stop();
     }
 
     private void render() {
@@ -99,7 +100,12 @@ public class Game extends Canvas implements Runnable {
         }
 
         _screen.clear();
-        _level.render(_player.x, _player.y, _screen);
+
+        int xScroll = _player.x - _screen.width / 2;
+        int yScroll = _player.y - _screen.height / 2;
+
+        _level.render(xScroll, yScroll, _screen);
+        _player.render(_screen);
 
         for (int i = 0; i < _pixels.length; i++) {
             _pixels[i] = _screen.pixels[i];
