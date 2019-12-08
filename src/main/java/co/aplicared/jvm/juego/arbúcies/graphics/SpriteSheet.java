@@ -6,6 +6,8 @@ import java.io.IOException;
 
 public class SpriteSheet {
     public static SpriteSheet terrain = new SpriteSheet("/textures/TerrainSS.png", 256);
+    public static SpriteSheet player = new SpriteSheet("/textures/PlayerSS.png", 256);
+
     public String path;
     public int size;
     public int[] pixels;

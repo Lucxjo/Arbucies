@@ -1,13 +1,32 @@
 package co.aplicared.jvm.juego.arbúcies.graphics;
 
 public class Sprite {
+
+    /**
+     * Tile Sprites
+     */
+
     public static Sprite grassSprite = new Sprite(16, 0, 0, SpriteSheet.terrain);
     public static Sprite voidSprite = new Sprite(16, 0x3b9eb5);
 
-    public static Sprite player0Sprite = new Sprite(16, 1, 0, SpriteSheet.terrain);
-    public static Sprite player1Sprite = new Sprite(16, 2, 0, SpriteSheet.terrain);
-    public static Sprite player2Sprite = new Sprite(16, 3, 0, SpriteSheet.terrain);
-    public static Sprite player3Sprite = new Sprite(16, 4, 0, SpriteSheet.terrain);
+    /**
+     * Player 1 Sprites
+     */
+    // Back
+    public static Sprite player0Bck0 = new Sprite(32, 0, 0, SpriteSheet.player);
+    public static Sprite player0Bck1 = new Sprite(32, 0, 1, SpriteSheet.player);
+
+    // Right
+    public static Sprite player0Rght0 = new Sprite(32, 1, 0, SpriteSheet.player);
+    public static Sprite player0Rght1 = new Sprite(32, 1, 1, SpriteSheet.player);
+
+    // Front
+    public static Sprite player0Frnt0 = new Sprite(32, 2, 0, SpriteSheet.player);
+    public static Sprite player0Frnt1 = new Sprite(32, 2, 1, SpriteSheet.player);
+
+    // Left
+    public static Sprite player0Left0 = new Sprite(32, 3, 0, SpriteSheet.player);
+    public static Sprite player0Left1 = new Sprite(32, 3, 1, SpriteSheet.player);
 
     public int size, xCoord, yCoord;
     public SpriteSheet sheet;

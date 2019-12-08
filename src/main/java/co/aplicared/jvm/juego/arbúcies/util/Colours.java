@@ -3,7 +3,7 @@ package co.aplicared.jvm.juego.arbúcies.util;
 public enum Colours {
     WHITE(0xFFFFFF, 0xFFFFFFFF),
     BLACK(0x000000, 0xFF000000),
-    TRANSPARENT(0xFF00FF, 0xFFFF00FF);
+    TRANSPARENT(0xef00ff, 0xFFef00ff);
 
     private final int rgb;
     private final int rgba;
