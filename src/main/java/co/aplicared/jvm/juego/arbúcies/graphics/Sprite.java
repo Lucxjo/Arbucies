@@ -6,7 +6,12 @@ public class Sprite {
      * Tile Sprites
      */
 
-    public static Sprite grassSprite = new Sprite(16, 0, 0, SpriteSheet.terrain);
+    public static Sprite lightGrassSprite = new Sprite(16, 0, 0, SpriteSheet.terrain);
+    public static Sprite darkGrassSprite = new Sprite(16, 1, 0, SpriteSheet.terrain);
+    public static Sprite dirtSprite = new Sprite(16, 2, 0, SpriteSheet.terrain);
+    public static Sprite stoneSprite = new Sprite(16, 3, 0, SpriteSheet.terrain);
+    public static Sprite lightInfernoSprite = new Sprite(16, 4, 0, SpriteSheet.terrain);
+    public static Sprite darkInfernoSprite = new Sprite(16, 5, 0, SpriteSheet.terrain);
     public static Sprite voidSprite = new Sprite(16, 0x3b9eb5);
 
     /**
@@ -27,6 +32,10 @@ public class Sprite {
     // Left
     public static Sprite player0Left0 = new Sprite(32, 3, 0, SpriteSheet.player);
     public static Sprite player0Left1 = new Sprite(32, 3, 1, SpriteSheet.player);
+
+    /**
+     * Logic
+     */
 
     public int size, xCoord, yCoord;
     public SpriteSheet sheet;

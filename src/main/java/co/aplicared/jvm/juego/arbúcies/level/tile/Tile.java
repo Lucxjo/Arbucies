@@ -4,8 +4,15 @@ import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
 
 public class Tile {
-    public static Tile grassTile = new GrassTile(Sprite.grassSprite);
+    public static Tile lightGrassTile = new GrassTile(Sprite.lightGrassSprite);
+    public static Tile darkGrassTile = new GrassTile(Sprite.darkGrassSprite);
+    public static Tile lightInfernoTile = new GrassTile(Sprite.lightInfernoSprite);
+    public static Tile darkInfernoTile = new GrassTile(Sprite.darkInfernoSprite);
+    public static Tile stoneTile = new StoneTile(Sprite.stoneSprite);
+    public static Tile dirtTile = new GrassTile(Sprite.dirtSprite);
+
     public static Tile voidTile = new VoidTile(Sprite.voidSprite);
+
     public Sprite sprite;
     public int x, y;
 

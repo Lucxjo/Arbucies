@@ -48,10 +48,12 @@ public class Level {
     private Tile getTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
 
-        if (tiles[x + y * width] == 0) {
-            return Tile.grassTile;
-        } else {
-            return Tile.voidTile;
-        }
+        if (tiles[x + y * width] == 0) return Tile.lightGrassTile;
+        if (tiles[x + y * width] == 1) return Tile.darkGrassTile;
+        if (tiles[x + y * width] == 4) return Tile.lightInfernoTile;
+        if (tiles[x + y * width] == 5) return Tile.darkInfernoTile;
+        if (tiles[x + y * width] == 2) return Tile.dirtTile;
+        if (tiles[x + y * width] == 3) return Tile.stoneTile;
+        else return Tile.voidTile;
     }
 }
