@@ -47,11 +47,45 @@ public class Player extends Mob {
     public void render(Screen screen) {
         if (dir == Compass.NORTH) {
             sprite = PlayerSprites.BACK.sprite();
+            if (walking) {
+                if (anim % 20 > 10) {
+                    sprite = PlayerSprites.BACK.sprite();
+                } else {
+                    sprite = PlayerSprites.BACK.altSprite();
+                }
+            }
         }
 
-        if (dir == Compass.SOUTH) sprite = PlayerSprites.FRONT.sprite();
-        if (dir == Compass.EAST) sprite = PlayerSprites.RIGHT.sprite();
-        if (dir == Compass.WEST) sprite = PlayerSprites.LEFT.sprite();
+        if (dir == Compass.SOUTH) {
+            sprite = PlayerSprites.FRONT.sprite();
+            if (walking) {
+                if (anim % 20 > 10) {
+                    sprite = PlayerSprites.FRONT.sprite();
+                } else {
+                    sprite = PlayerSprites.FRONT.altSprite();
+                }
+            }
+        }
+        if (dir == Compass.EAST) {
+            sprite = PlayerSprites.RIGHT.sprite();
+            if (walking) {
+                if (anim % 20 > 10) {
+                    sprite = PlayerSprites.RIGHT.sprite();
+                } else {
+                    sprite = PlayerSprites.RIGHT.altSprite();
+                }
+            }
+        }
+        if (dir == Compass.WEST) {
+            sprite = PlayerSprites.LEFT.sprite();
+            if (walking) {
+                if (anim % 20 > 10) {
+                    sprite = PlayerSprites.LEFT.sprite();
+                } else {
+                    sprite = PlayerSprites.LEFT.altSprite();
+                }
+            }
+        }
 
         screen.renderPlayer(x - 16, y - 16, sprite);
     }
