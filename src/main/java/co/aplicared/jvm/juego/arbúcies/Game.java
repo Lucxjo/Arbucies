@@ -4,7 +4,7 @@ import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.Level;
-import co.aplicared.jvm.juego.arbúcies.level.RandomLevel;
+import co.aplicared.jvm.juego.arbúcies.level.SpawnLevel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +36,7 @@ public class Game extends Canvas implements Runnable {
         setPreferredSize(size);
 
         _key = new Keyboard();
-        _level = new RandomLevel(64, 64);
+        _level = new SpawnLevel("/levels/SpawnLevel.png");
         _screen = new Screen(width, height);
         _player = new Player(_key);
 
