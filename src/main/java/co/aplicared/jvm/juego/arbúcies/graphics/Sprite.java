@@ -12,6 +12,12 @@ public class Sprite {
     public static Sprite stoneSprite = new Sprite(16, 3, 0, SpriteSheet.terrain);
     public static Sprite lightInfernoSprite = new Sprite(16, 4, 0, SpriteSheet.terrain);
     public static Sprite darkInfernoSprite = new Sprite(16, 5, 0, SpriteSheet.terrain);
+    public static Sprite brickSprite = new Sprite(16, 0, 1, SpriteSheet.terrain);
+    public static Sprite waterSprite = new Sprite(16, 1, 1, SpriteSheet.terrain);
+    public static Sprite crackedStoneSprite = new Sprite(16, 2, 1, SpriteSheet.terrain);
+    public static Sprite mossyCrackedStoneSprite = new Sprite(16, 3, 1, SpriteSheet.terrain);
+    public static Sprite birchWoodSprite = new Sprite(16, 0, 2, SpriteSheet.terrain);
+
     public static Sprite voidSprite = new Sprite(16, 0x3b9eb5);
 
     /**
