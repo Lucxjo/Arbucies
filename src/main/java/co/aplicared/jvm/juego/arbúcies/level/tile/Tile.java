@@ -32,7 +32,11 @@ public class Tile {
     public void render(int x, int y, Screen screen) {
     }
 
-    protected boolean solid() {
+    public boolean solid() {
+        return false;
+    }
+
+    protected boolean breakable() {
         return false;
     }
 }

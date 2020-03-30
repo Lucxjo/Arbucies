@@ -25,4 +25,8 @@ public abstract class Entity {
     public boolean isRemoved() {
         return _isRemoved;
     }
+
+    public void init(Level level) {
+        this.level = level;
+    }
 }

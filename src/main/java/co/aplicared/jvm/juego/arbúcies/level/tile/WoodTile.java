@@ -15,7 +15,12 @@ public class WoodTile extends Tile {
     }
 
     @Override
-    protected boolean solid() {
+    public boolean solid() {
+        return true;
+    }
+
+    @Override
+    protected boolean breakable() {
         return true;
     }
 }

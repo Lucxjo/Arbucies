@@ -57,7 +57,7 @@ public class Level {
     // Stone: 0xC70000
     // Dirt: 0xC7C700
 
-    private Tile getTile(int x, int y) {
+    public Tile getTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
 
         if (tiles[x + y * width] == Colours.TEX_LIGHT_GRASS.RGBA()) return Tile.lightGrassTile;

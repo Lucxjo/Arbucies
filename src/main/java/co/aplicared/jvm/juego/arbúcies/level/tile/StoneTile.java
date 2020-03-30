@@ -14,7 +14,7 @@ public class StoneTile extends Tile {
     }
 
     @Override
-    protected boolean solid() {
+    public boolean solid() {
         return true;
     }
 }

@@ -4,6 +4,7 @@ import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.Level;
+import co.aplicared.jvm.juego.arbúcies.level.TileCoord;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
+        TileCoord playerSpawn = new TileCoord(20, 65);
 
         _gameFrame = new JFrame();
         setPreferredSize(size);
@@ -37,7 +39,8 @@ public class Game extends Canvas implements Runnable {
         _key = new Keyboard();
         _level = Level.spawn;
         _screen = new Screen(width, height);
-        _player = new Player(_key);
+        _player = new Player(playerSpawn.getX(), playerSpawn.getY(), _key);
+        _player.init(_level);
 
         addKeyListener(_key);
     }
