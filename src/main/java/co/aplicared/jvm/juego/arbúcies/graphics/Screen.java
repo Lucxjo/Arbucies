@@ -3,6 +3,7 @@ package co.aplicared.jvm.juego.arbúcies.graphics;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbúcies.util.Colours;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Screen {
@@ -26,9 +27,7 @@ public class Screen {
     }
 
     public void clear() {
-        for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = 0;
-        }
+        Arrays.fill(pixels, 0);
     }
 
     public void renderTile(int xp, int yp, Tile tile) {
