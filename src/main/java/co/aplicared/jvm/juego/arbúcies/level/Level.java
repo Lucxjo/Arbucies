@@ -9,6 +9,8 @@ public class Level {
     protected int[] tilesInt;
     protected int[] tiles;
 
+    public static Level spawn = new SpawnLevel("/levels/NewSpawnLevel.png");
+
     public Level(int width, int height) {
         this.width = width;
         this.height = height;
@@ -64,6 +66,8 @@ public class Level {
         if (tiles[x + y * width] == Colours.TEX_DARK_INFERNO.RGBA()) return Tile.darkInfernoTile;
         if (tiles[x + y * width] == Colours.TEX_DIRT.RGBA()) return Tile.dirtTile;
         if (tiles[x + y * width] == Colours.TEX_STONE.RGBA()) return Tile.stoneTile;
+        if (tiles[x + y * width] == Colours.TEX_WATER.RGBA()) return Tile.waterTile;
+        if (tiles[x + y * width] == Colours.PNT_SPAWN.RGBA()) return Tile.dirtTile;
         else return Tile.voidTile;
     }
 }
