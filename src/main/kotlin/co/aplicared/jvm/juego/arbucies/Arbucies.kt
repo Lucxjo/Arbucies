@@ -1,8 +1,8 @@
 package co.aplicared.jvm.juego.arbucies
 
+import co.aplicared.jvm.juego.arbucies.control.Mouse
 import co.aplicared.jvm.juego.arbucies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard
-import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
 import co.aplicared.jvm.juego.arbúcies.level.Level
 import co.aplicared.jvm.juego.arbúcies.level.TileCoord
@@ -15,10 +15,21 @@ import javax.swing.JFrame
 class Arbucies : Canvas(), Runnable {
     val serialVersionUID = 1L
 
-    val title = "Arbúcies"
-    val aWidth = 300
-    val aHeight = aWidth / 16 * 9
-    val scale = 3
+    companion object {
+        const val title = "Arbúcies"
+        const val aWidth = 300
+        const val aHeight = aWidth / 16 * 9
+        const val scale = 3
+
+        fun getWindowWidth(): Int {
+            return aWidth * scale
+        }
+
+        fun getWindowHeight(): Int {
+            return aHeight * scale
+        }
+    }
+
 
     private lateinit var _gameThread: Thread
     var gameFrame: JFrame
@@ -136,7 +147,7 @@ class Arbucies : Canvas(), Runnable {
 fun main(args: Array<String>) {
     val game = Arbucies()
     game.gameFrame.isResizable = false
-    game.gameFrame.title = game.title
+    game.gameFrame.title = Arbucies.title
     game.gameFrame.add(game)
     game.gameFrame.pack()
     game.gameFrame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE

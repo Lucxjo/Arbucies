@@ -1,8 +1,8 @@
 package co.aplicared.jvm.juego.arbucies.entity.mob
 
 import co.aplicared.jvm.juego.arbucies.Arbucies
+import co.aplicared.jvm.juego.arbucies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard
-import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Mob
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
@@ -39,9 +39,9 @@ open class Player(private var input: Keyboard) : Mob() {
     }
 
     private fun updateShooting() {
-        if (Mouse.getMouseB() == 1) {
-            val dx: Double = Mouse.getMouseX().toDouble() - Arbucies().width / 2
-            val dy: Double = Mouse.getMouseY().toDouble() - Arbucies().height / 2
+        if (Mouse.mouseB == 1) {
+            val dx: Double = Mouse.mouseX.toDouble() - Arbucies.getWindowWidth() / 2
+            val dy: Double = Mouse.mouseY.toDouble() - Arbucies.getWindowHeight() / 2
             val direction = atan2(dy, dx)
             shoot(x, y, direction)
         }
