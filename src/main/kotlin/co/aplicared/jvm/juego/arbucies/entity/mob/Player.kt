@@ -1,11 +1,14 @@
 package co.aplicared.jvm.juego.arbucies.entity.mob
 
+import co.aplicared.jvm.juego.arbucies.Arbucies
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard
+import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Mob
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite
 import co.aplicared.jvm.juego.arbúcies.util.Compass
+import kotlin.math.atan2
 
 open class Player(private var input: Keyboard) : Mob() {
     private var pSprite: Sprite = PlayerSprites.BACK.sprite()
@@ -31,6 +34,17 @@ open class Player(private var input: Keyboard) : Mob() {
             move(xa, ya)
             true
         } else false
+
+        updateShooting()
+    }
+
+    private fun updateShooting() {
+        if (Mouse.getMouseB() == 1) {
+            val dx: Double = Mouse.getMouseX().toDouble() - Arbucies().width / 2
+            val dy: Double = Mouse.getMouseY().toDouble() - Arbucies().height / 2
+            val direction = atan2(dy, dx)
+            shoot(x, y, direction)
+        }
     }
 
     override fun render(screen: Screen) {
