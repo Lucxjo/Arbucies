@@ -1,15 +1,13 @@
 package co.aplicared.jvm.juego.arbucies
 
+import co.aplicared.jvm.juego.arbucies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard
 import co.aplicared.jvm.juego.arbúcies.control.Mouse
-import co.aplicared.jvm.juego.arbúcies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
 import co.aplicared.jvm.juego.arbúcies.level.Level
 import co.aplicared.jvm.juego.arbúcies.level.TileCoord
 import java.awt.Canvas
-import java.awt.Color
 import java.awt.Dimension
-import java.awt.Font
 import java.awt.image.BufferedImage
 import java.awt.image.DataBufferInt
 import javax.swing.JFrame
@@ -109,10 +107,6 @@ class Arbucies : Canvas(), Runnable {
 
         val g = bs.drawGraphics
         g.drawImage(_image, 0, 0, width, height, null)
-        g.color = Color.WHITE
-        g.font = Font("Ubuntu", Font.PLAIN, 20)
-        g.fillRect(Mouse.getMouseX() - 32, Mouse.getMouseY() - 32, 64, 64)
-        g.drawString("Button: " + Mouse.getMouseB(), 80, 80)
         g.dispose()
         bs.show()
     }
