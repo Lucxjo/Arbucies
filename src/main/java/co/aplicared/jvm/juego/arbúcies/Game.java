@@ -1,6 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies;
 
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
+import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.Level;
@@ -12,7 +13,9 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+@Deprecated
 public class Game extends Canvas implements Runnable {
+    private static final long serialVersionUID = 1L;
 
     public static final String title = "Arbúcies";
     public static int width = 300, height = width / 16 * 10, scale = 3;
@@ -28,6 +31,7 @@ public class Game extends Canvas implements Runnable {
     private Level _level;
     private Screen _screen;
     private Player _player;
+    private Mouse _mouse;
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
@@ -37,12 +41,15 @@ public class Game extends Canvas implements Runnable {
         setPreferredSize(size);
 
         _key = new Keyboard();
+        _mouse = new Mouse();
         _level = Level.spawn;
         _screen = new Screen(width, height);
         _player = new Player(playerSpawn.getX(), playerSpawn.getY(), _key);
         _player.init(_level);
 
         addKeyListener(_key);
+        addMouseListener(_mouse);
+        addMouseMotionListener(_mouse);
     }
 
     public static void main(String[] args) {
@@ -61,6 +68,11 @@ public class Game extends Canvas implements Runnable {
 
     @Override
     public void run() {
+        if (System.getProperty("os.name").toLowerCase().equals("mac os x")) {
+            System.out.println("macOS");
+            System.setProperty("apple.laf.useScreenMenuBar", "true");
+            System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
+        }
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
         double ns = 1000000000.0 / 60.0;
@@ -85,7 +97,7 @@ public class Game extends Canvas implements Runnable {
             frames++;
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                _gameFrame.setTitle(title + " || TPS: " + ticks + " | FPS: " + frames);
+                _gameFrame.setTitle(title + " (J) || TPS: " + ticks + " | FPS: " + frames);
                 ticks = 0;
                 frames = 0;
             }
@@ -115,6 +127,10 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(_image, 0, 0, getWidth(), getHeight(), null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Ubuntu", Font.PLAIN, 20));
+        g.fillRect(Mouse.getMouseX() - 32, Mouse.getMouseY() - 32, 64, 64);
+        g.drawString("Button: " + Mouse.getMouseB(), 80, 80);
         g.dispose();
         bs.show();
     }
