@@ -6,10 +6,9 @@ import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbúcies.util.Compass;
 
-@Deprecated
 public class Player extends Mob {
 
-    private Keyboard input;
+    private final Keyboard input;
     private Sprite sprite;
     private int anim = 0;
     private boolean walking = false;

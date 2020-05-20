@@ -1,8 +1,8 @@
 package co.aplicared.jvm.juego.arbucies
 
-import co.aplicared.jvm.juego.arbucies.control.Mouse
-import co.aplicared.jvm.juego.arbucies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard
+import co.aplicared.jvm.juego.arbúcies.control.Mouse
+import co.aplicared.jvm.juego.arbúcies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
 import co.aplicared.jvm.juego.arbúcies.level.Level
 import co.aplicared.jvm.juego.arbúcies.level.TileCoord

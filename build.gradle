@@ -4,7 +4,6 @@ plugins {
     id 'java'
     id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.3.41'
-    id 'com.gradle.build-scan' version '3.0'
     id 'net.nemerosa.versioning' version '2.6.1'
 }
 
@@ -28,9 +27,12 @@ dependencies {
     annotationProcessor group: 'systems.manifold', name: 'manifold-all', version: '2019.1.23'
 }
 
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+        publishAlways()
+    }
 }
 
 compileKotlin {
