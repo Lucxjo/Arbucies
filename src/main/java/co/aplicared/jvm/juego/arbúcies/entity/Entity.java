@@ -8,7 +8,7 @@ import java.util.Random;
 public abstract class Entity {
 
     protected final Random random = new Random();
-    public int x, y;
+    public Double x, y;
     protected Level level;
     private boolean _isRemoved = false;
 

@@ -20,18 +20,18 @@ public class Game extends Canvas implements Runnable {
     public static final String title = "Arbúcies";
     public static int width = 300, height = width / 16 * 10, scale = 3;
     private Thread _gameThread;
-    private JFrame _gameFrame;
+    private final JFrame _gameFrame;
 
     private boolean _isRunning = false;
 
-    private BufferedImage _image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    private int[] _pixels = ((DataBufferInt) _image.getRaster().getDataBuffer()).getData();
+    private final BufferedImage _image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    private final int[] _pixels = ((DataBufferInt) _image.getRaster().getDataBuffer()).getData();
 
-    private Keyboard _key;
-    private Level _level;
-    private Screen _screen;
-    private Player _player;
-    private Mouse _mouse;
+    private final Keyboard _key;
+    private final Level _level;
+    private final Screen _screen;
+    private final Player _player;
+    private final Mouse _mouse;
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
@@ -115,8 +115,8 @@ public class Game extends Canvas implements Runnable {
 
         _screen.clear();
 
-        int xScroll = _player.x - _screen.width / 2;
-        int yScroll = _player.y - _screen.height / 2;
+        int xScroll = _player.x.intValue() - _screen.width / 2;
+        int yScroll = _player.y.intValue() - _screen.height / 2;
 
         _level.render(xScroll, yScroll, _screen);
         _player.render(_screen);

@@ -109,7 +109,7 @@ class Arbucies : Canvas(), Runnable {
         val xScroll = _player.x - _screen.width / 2
         val yScroll = _player.y - _screen.height / 2
 
-        _level.render(xScroll, yScroll, _screen)
+        _level.render(xScroll.toInt(), yScroll.toInt(), _screen)
         _player.render(_screen)
 
         for (i in _pixels.indices) {

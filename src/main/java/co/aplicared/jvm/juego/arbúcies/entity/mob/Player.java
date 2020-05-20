@@ -21,8 +21,8 @@ public class Player extends Mob {
     }
 
     public Player(int x, int y, Keyboard input) {
-        this.x = x;
-        this.y = y;
+        this.x = x + 0.0;
+        this.y = y + 0.0;
         this.input = input;
         this.sprite = PlayerSprites.BACK.sprite();
     }
@@ -52,7 +52,7 @@ public class Player extends Mob {
             double dx = Mouse.getMouseX() - (Arbucies.Companion.getWindowWidth() >> 1);
             double dy = Mouse.getMouseY() - (Arbucies.Companion.getWindowHeight() >> 1);
             double pDir = Math.atan2(dy, dx);
-            shoot(x, y, pDir);
+            shoot(x.intValue(), y.intValue(), pDir);
         }
     }
 
@@ -100,6 +100,6 @@ public class Player extends Mob {
             }
         }
 
-        screen.renderPlayer(x - 16, y - 16, sprite);
+        screen.renderPlayer((int) (x - 16), (int) (y - 16), sprite);
     }
 }

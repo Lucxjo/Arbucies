@@ -47,8 +47,8 @@ public abstract class Mob extends Entity {
         boolean solid = false;
 
         for (int c = 0; c < 4; c++) {
-            int xt = ((x + xa) + ((c % 2) * 12) - 8) >> 4;
-            int yt = ((y + ya) + ((c >> 1) * 16) - 1) >> 4;
+            int xt = (int) ((x + xa) + ((c % 2) * 12) - 8) >> 4;
+            int yt = (int) ((y + ya) + ((c >> 1) * 16) - 1) >> 4;
 
             if (level.getTile(xt, yt).solid()) solid = true;
         }

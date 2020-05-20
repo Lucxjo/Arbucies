@@ -24,12 +24,12 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
 
     override fun move() {
         super.move()
-        x = x.plus(nx!!).toInt()
-        y = y.plus(ny!!).toInt()
+        x = x.plus(nx!!)
+        y = y.plus(ny!!)
     }
 
     override fun render(screen: Screen?) {
         super.render(screen)
-        screen?.renderProjectile(x, y, this)
+        screen?.renderProjectile(x.toInt() - 12, y.toInt() - 2, this)
     }
 }

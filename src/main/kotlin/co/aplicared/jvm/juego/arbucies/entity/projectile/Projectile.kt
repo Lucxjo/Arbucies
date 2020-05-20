@@ -17,8 +17,8 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected var damage: Double? = null
 
     init {
-        this.x = x.toInt()
-        this.y = y.toInt()
+        this.x = x
+        this.y = y
     }
 
     protected open fun move() {}
