@@ -1,6 +1,8 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
+import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
+import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
@@ -35,11 +37,22 @@ public class Player extends Mob {
         if (input.left) xa--;
         if (input.right) xa++;
 
+        updateShooting();
+
         if (xa != 0 || ya != 0) {
             move(xa, ya);
             walking = true;
         } else {
             walking = false;
+        }
+    }
+
+    private void updateShooting() {
+        if (Mouse.getMouseB() == 1) {
+            double dx = Mouse.getMouseX() - (Arbucies.Companion.getWindowWidth() >> 1);
+            double dy = Mouse.getMouseY() - (Arbucies.Companion.getWindowHeight() >> 1);
+            double pDir = Math.atan2(dy, dx);
+            shoot(x, y, pDir);
         }
     }
 

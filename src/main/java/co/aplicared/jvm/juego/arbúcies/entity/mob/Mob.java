@@ -31,7 +31,8 @@ public abstract class Mob extends Entity {
     }
 
     protected void shoot(int pX, int pY, double dir) {
-        System.out.println("Angle: " + dir);
+        System.out.println("Angle (rad): " + dir);
+        System.out.println("Angle (deg): " + Math.toDegrees(dir));
     }
 
     private boolean collision(int xa, int ya) {
