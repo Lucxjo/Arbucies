@@ -1,13 +1,19 @@
 package co.aplicared.jvm.juego.arbúcies.level;
 
+import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbúcies.util.Colours;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Level {
     protected int width, height;
     protected int[] tilesInt;
     protected int[] tiles;
+
+    private final List<Entity> entities = new ArrayList<>();
 
     public static Level spawn = new SpawnLevel("/levels/NewSpawnLevel.png");
 
@@ -32,7 +38,10 @@ public class Level {
     protected void time() {
     }
 
-    protected void update() {
+    public void update() {
+        for (Entity entity : entities) {
+            entity.update();
+        }
     }
 
     public void render(int xScroll, int yScroll, Screen screen) {
@@ -47,6 +56,10 @@ public class Level {
             for (int x = x0; x < x1; x++) {
                 getTile(x, y).render(x, y, screen);
             }
+        }
+
+        for (Entity entity : entities) {
+            entity.render(screen);
         }
     }
 
@@ -69,5 +82,9 @@ public class Level {
         if (tiles[x + y * width] == Colours.TEX_WATER.RGBA()) return Tile.waterTile;
         if (tiles[x + y * width] == Colours.PNT_SPAWN.RGBA()) return Tile.dirtTile;
         else return Tile.voidTile;
+    }
+
+    public void add(Entity e) {
+        entities.add(e);
     }
 }

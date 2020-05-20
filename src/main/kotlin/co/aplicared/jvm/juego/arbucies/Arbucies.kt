@@ -125,6 +125,7 @@ class Arbucies : Canvas(), Runnable {
     private fun tick() {
         _key.update()
         _player.update()
+        _level.update()
     }
 
     @Synchronized
