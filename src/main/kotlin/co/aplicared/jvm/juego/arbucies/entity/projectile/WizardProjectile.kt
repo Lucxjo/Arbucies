@@ -12,7 +12,7 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
         rateOfFire = 15.0
         speed = 4.0
 
-        sprite = Sprite.darkGrassSprite
+        sprite = Sprite.ballProjectile
         nx = speed!!.times(cos(angle))
         ny = speed!!.times(sin(angle))
     }
@@ -30,6 +30,6 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
 
     override fun render(screen: Screen?) {
         super.render(screen)
-        screen?.renderTile(x, y, sprite)
+        screen?.renderProjectile(x, y, this)
     }
 }

@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies.graphics;
 
+import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbúcies.util.Colours;
 
@@ -46,18 +47,19 @@ public class Screen {
         }
     }
 
-    public void renderTile(int xp, int yp, Sprite sprite) {
+    public void renderProjectile(int xp, int yp, Projectile p) {
         xp -= xOffset;
         yp -= yOffset;
 
-        for (int y = 0; y < sprite.size; y++) {
+        for (int y = 0; y < p.getSpriteSize(); y++) {
             int ya = y + yp;
-            for (int x = 0; x < sprite.size; x++) {
+            for (int x = 0; x < p.getSpriteSize(); x++) {
                 int xa = x + xp;
-                if (xa < -sprite.size || xa >= width || ya < -sprite.size || ya >= height) break;
+                if (xa < -p.getSpriteSize() || xa >= width || ya < -p.getSpriteSize() || ya >= height) break;
                 if (xa < 0) xa = 0;
                 if (ya < 0) ya = 0;
-                pixels[xa + ya * width] = sprite.pixels[x + y * sprite.size];
+                int col = p.getSprite().pixels[x + y * p.getSpriteSize()];
+                if (col != Colours.TRANSPARENT.RGBA()) pixels[xa + ya * width] = col;
             }
         }
     }

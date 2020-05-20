@@ -8,7 +8,7 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected val xOrigin: Int = x.roundToInt()
     protected val yOrigin: Int = y.roundToInt()
     protected var angle: Double = dir.toDouble()
-    protected var sprite: Sprite? = null
+    lateinit var sprite: Sprite
     protected var nx: Double? = null
     protected var ny: Double? = null
     protected var speed: Double? = null
@@ -22,4 +22,8 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     }
 
     protected open fun move() {}
+
+    fun getSpriteSize(): Int {
+        return sprite.size
+    }
 }

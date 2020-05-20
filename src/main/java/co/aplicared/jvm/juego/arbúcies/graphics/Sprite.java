@@ -40,6 +40,12 @@ public class Sprite {
     public static Sprite player0Left1 = new Sprite(32, 3, 1, SpriteSheet.player);
 
     /**
+     * Projectile Sprites
+     */
+
+    public static Sprite ballProjectile = new Sprite(16, 0, 0, SpriteSheet.projectile);
+
+    /**
      * Logic
      */
 
