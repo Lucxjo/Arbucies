@@ -7,7 +7,7 @@ import kotlin.math.sin
 
 class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir) {
     init {
-        range = 200.0
+        range = 20.0
         damage = 20.0
         rateOfFire = 15.0
         speed = 4.0
@@ -26,6 +26,9 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
         super.move()
         x = x.plus(nx!!)
         y = y.plus(ny!!)
+        if (distance() > range!!) {
+            remove()
+        }
     }
 
     override fun render(screen: Screen?) {

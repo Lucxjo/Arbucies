@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
+import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
 import co.aplicared.jvm.juego.arbúcies.entity.Entity;
@@ -32,6 +33,7 @@ public abstract class Mob extends Entity {
             x += xa;
             y += ya;
         }
+        Arbucies.Companion.getLog().info("Projectiles: " + projectiles.size());
     }
 
     public void update() {

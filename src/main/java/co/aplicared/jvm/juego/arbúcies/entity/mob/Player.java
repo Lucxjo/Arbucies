@@ -1,6 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
 import co.aplicared.jvm.juego.arbucies.Arbucies;
+import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
@@ -37,13 +38,20 @@ public class Player extends Mob {
         if (input.left) xa--;
         if (input.right) xa++;
 
-        updateShooting();
-
         if (xa != 0 || ya != 0) {
             move(xa, ya);
             walking = true;
         } else {
             walking = false;
+        }
+        clear();
+        updateShooting();
+    }
+
+    private void clear() {
+        for (int i = 0; i < projectiles.size(); i++) {
+            Projectile p = projectiles.get(i);
+            if (p.isRemoved()) projectiles.remove(i);
         }
     }
 

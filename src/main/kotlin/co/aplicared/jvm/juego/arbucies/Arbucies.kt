@@ -10,6 +10,7 @@ import java.awt.Canvas
 import java.awt.Dimension
 import java.awt.image.BufferedImage
 import java.awt.image.DataBufferInt
+import java.util.logging.Logger
 import javax.swing.JFrame
 
 class Arbucies : Canvas(), Runnable {
@@ -20,6 +21,8 @@ class Arbucies : Canvas(), Runnable {
         const val aWidth = 300
         const val aHeight = aWidth / 16 * 9
         const val scale = 3
+
+        val log: Logger = Logger.getLogger("Arbúcies")
 
         fun getWindowWidth(): Int {
             return aWidth * scale
@@ -46,6 +49,7 @@ class Arbucies : Canvas(), Runnable {
     private val _mouse: Mouse
 
     init {
+        log.info("Game started!")
         val size = Dimension(aWidth * scale, aHeight * scale)
         val playerSpawn = TileCoord(20, 65)
         gameFrame = JFrame()
