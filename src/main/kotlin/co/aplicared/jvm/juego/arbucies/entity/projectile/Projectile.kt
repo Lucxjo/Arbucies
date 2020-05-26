@@ -10,12 +10,11 @@ import kotlin.random.Random
 abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected val xOrigin: Int = x.roundToInt()
     protected val yOrigin: Int = y.roundToInt()
-    protected var angle: Double = dir.toDouble()
+    protected var angle: Double = dir
     lateinit var sprite: Sprite
     protected var nx: Double? = null
     protected var ny: Double? = null
     protected var speed: Double? = null
-    protected var rateOfFire: Double? = null
     protected var range: Double? = null
     protected var damage: Double? = null
 

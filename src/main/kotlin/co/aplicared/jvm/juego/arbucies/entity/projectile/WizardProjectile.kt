@@ -6,12 +6,14 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir) {
+    companion object {
+        var FIRE_RATE = 15
+    }
+
     init {
         range = random.nextDouble(100.0) + 100.0
         damage = 20.0
-        rateOfFire = 15.0
         speed = 4.0
-
         sprite = Sprite.ballProjectile
         nx = speed!!.times(cos(angle))
         ny = speed!!.times(sin(angle))

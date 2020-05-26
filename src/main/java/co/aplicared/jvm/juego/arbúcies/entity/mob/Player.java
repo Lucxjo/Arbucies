@@ -2,6 +2,7 @@ package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
 import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
+import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
@@ -16,6 +17,8 @@ public class Player extends Mob {
     private int anim = 0;
     private boolean walking = false;
 
+    private int fireRate = 0;
+
     public Player(Keyboard input) {
         this.sprite = PlayerSprites.BACK.sprite();
         this.input = input;
@@ -26,10 +29,12 @@ public class Player extends Mob {
         this.y = y + 0.0;
         this.input = input;
         this.sprite = PlayerSprites.BACK.sprite();
+        fireRate = WizardProjectile.Companion.getFIRE_RATE();
     }
 
     @Override
     public void update() {
+        if (fireRate > 0) fireRate--;
         int xa = 0, ya = 0;
         if (anim < 200) anim++;
         else anim = 0;
@@ -56,11 +61,12 @@ public class Player extends Mob {
     }
 
     private void updateShooting() {
-        if (Mouse.getMouseB() == 1) {
+        if (Mouse.getMouseB() == 1 && fireRate <= 0) {
             double dx = Mouse.getMouseX() - (Arbucies.Companion.getWindowWidth() >> 1);
             double dy = Mouse.getMouseY() - (Arbucies.Companion.getWindowHeight() >> 1);
             double pDir = Math.atan2(dy, dx);
             shoot(x.intValue(), y.intValue(), pDir);
+            fireRate = WizardProjectile.Companion.getFIRE_RATE();
         }
     }
 
