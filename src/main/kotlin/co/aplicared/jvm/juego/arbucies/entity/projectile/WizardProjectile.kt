@@ -7,7 +7,7 @@ import kotlin.math.sin
 
 class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir) {
     init {
-        range = 20.0
+        range = random.nextDouble(100.0) + 100.0
         damage = 20.0
         rateOfFire = 15.0
         speed = 4.0

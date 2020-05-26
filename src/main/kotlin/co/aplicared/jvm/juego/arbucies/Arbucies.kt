@@ -18,8 +18,8 @@ class Arbucies : Canvas(), Runnable {
 
     companion object {
         const val title = "Arbúcies"
-        const val aWidth = 300
-        const val aHeight = aWidth / 16 * 9
+        const val aWidth = 400
+        const val aHeight = aWidth / 16 * 10
         const val scale = 3
 
         val log: Logger = Logger.getLogger("Arbúcies")
@@ -47,6 +47,7 @@ class Arbucies : Canvas(), Runnable {
     private val _screen: Screen
     private val _player: Player
     private val _mouse: Mouse
+
 
     init {
         log.info("Game started!")

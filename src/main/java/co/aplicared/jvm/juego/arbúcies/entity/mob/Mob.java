@@ -7,16 +7,11 @@ import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbúcies.util.Compass;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Mob extends Entity {
 
     protected Sprite sprite;
     protected Compass dir = Compass.NORTH;
     protected boolean moving = false;
-
-    protected List<Projectile> projectiles = new ArrayList<>();
 
     public void move(int xa, int ya) {
         if (xa != 0 && ya != 0) {
@@ -33,7 +28,7 @@ public abstract class Mob extends Entity {
             x += xa;
             y += ya;
         }
-        Arbucies.Companion.getLog().info("Projectiles: " + projectiles.size());
+        Arbucies.Companion.getLog().info("Projectiles: " + level.getProjectiles().size());
     }
 
     public void update() {
@@ -41,7 +36,7 @@ public abstract class Mob extends Entity {
 
     protected void shoot(int pX, int pY, double dir) {
         Projectile p = new WizardProjectile(x, y, dir);
-        projectiles.add(p);
+        level.getProjectiles().add(p);
         level.add(p);
     }
 

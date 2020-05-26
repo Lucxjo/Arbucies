@@ -5,6 +5,7 @@ import co.aplicared.jvm.juego.arbúcies.graphics.Sprite
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected val xOrigin: Int = x.roundToInt()
@@ -17,6 +18,8 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected var rateOfFire: Double? = null
     protected var range: Double? = null
     protected var damage: Double? = null
+
+    protected var random = Random
 
     init {
         this.x = x

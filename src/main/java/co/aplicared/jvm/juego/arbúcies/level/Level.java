@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies.level;
 
+import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
@@ -14,6 +15,12 @@ public class Level {
     protected int[] tiles;
 
     private final List<Entity> entities = new ArrayList<>();
+
+    private final List<Projectile> projectiles = new ArrayList<>();
+
+    public List<Projectile> getProjectiles() {
+        return projectiles;
+    }
 
     public static Level spawn = new SpawnLevel("/levels/NewSpawnLevel.png");
 
@@ -42,6 +49,10 @@ public class Level {
         for (Entity entity : entities) {
             entity.update();
         }
+
+        for (Projectile projectile : projectiles) {
+            projectile.update();
+        }
     }
 
     public void render(int xScroll, int yScroll, Screen screen) {
@@ -60,6 +71,10 @@ public class Level {
 
         for (Entity entity : entities) {
             entity.render(screen);
+        }
+
+        for (Projectile projectile : projectiles) {
+            projectile.render(screen);
         }
     }
 
@@ -86,5 +101,9 @@ public class Level {
 
     public void add(Entity e) {
         entities.add(e);
+    }
+
+    public void add(Projectile p) {
+        projectiles.add(p);
     }
 }
