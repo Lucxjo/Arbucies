@@ -3,12 +3,12 @@ package co.aplicared.jvm.juego.arbúcies.entity.mob;
 import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
+import co.aplicared.jvm.juego.arbucies.util.Compass;
 import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
-import co.aplicared.jvm.juego.arbúcies.util.Compass;
 
 public class Player extends Mob {
 

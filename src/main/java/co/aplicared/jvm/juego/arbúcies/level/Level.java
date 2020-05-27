@@ -1,10 +1,10 @@
 package co.aplicared.jvm.juego.arbúcies.level;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
+import co.aplicared.jvm.juego.arbucies.util.Colours;
 import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
-import co.aplicared.jvm.juego.arbúcies.util.Colours;
 
 import java.util.ArrayList;
 import java.util.List;

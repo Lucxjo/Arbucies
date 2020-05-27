@@ -1,8 +1,8 @@
 package co.aplicared.jvm.juego.arbúcies.graphics;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
+import co.aplicared.jvm.juego.arbucies.util.Colours;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
-import co.aplicared.jvm.juego.arbúcies.util.Colours;
 
 import java.util.Arrays;
 import java.util.Random;

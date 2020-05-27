@@ -1,24 +1,17 @@
-package co.aplicared.jvm.juego.arbúcies.util;
+package co.aplicared.jvm.juego.arbucies.util
 
-public enum Compass {
+enum class Compass(private val `val`: Int, private val description: String) {
     NORTH(0, "North"),
     EAST(1, "East"),
     SOUTH(2, "South"),
     WEST(3, "West");
 
-    private final int val;
-    private final String description;
-
-    Compass(int i, String description) {
-        val = i;
-        this.description = description;
+    fun value(): Int {
+        return `val`
     }
 
-    public int value() {
-        return val;
+    fun desc(): String {
+        return description
     }
 
-    public String desc() {
-        return description;
-    }
 }

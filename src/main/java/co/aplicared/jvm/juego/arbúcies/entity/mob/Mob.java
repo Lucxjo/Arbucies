@@ -2,9 +2,9 @@ package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
+import co.aplicared.jvm.juego.arbucies.util.Compass;
 import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
-import co.aplicared.jvm.juego.arbúcies.util.Compass;
 
 public abstract class Mob extends Entity {
 
