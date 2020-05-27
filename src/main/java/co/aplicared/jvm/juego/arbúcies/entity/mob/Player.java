@@ -1,10 +1,10 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
 import co.aplicared.jvm.juego.arbucies.Arbucies;
+import co.aplicared.jvm.juego.arbucies.control.Keyboard;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
 import co.aplicared.jvm.juego.arbucies.util.Compass;
-import co.aplicared.jvm.juego.arbúcies.control.Keyboard;
 import co.aplicared.jvm.juego.arbúcies.control.Mouse;
 import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
@@ -38,10 +38,10 @@ public class Player extends Mob {
         int xa = 0, ya = 0;
         if (anim < 200) anim++;
         else anim = 0;
-        if (input.up) ya--;
-        if (input.down) ya++;
-        if (input.left) xa--;
-        if (input.right) xa++;
+        if (input.getUp()) ya--;
+        if (input.getDown()) ya++;
+        if (input.getLeft()) xa--;
+        if (input.getRight()) xa++;
 
         if (xa != 0 || ya != 0) {
             move(xa, ya);

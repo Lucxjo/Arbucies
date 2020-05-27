@@ -1,6 +1,6 @@
 package co.aplicared.jvm.juego.arbucies
 
-import co.aplicared.jvm.juego.arbúcies.control.Keyboard
+import co.aplicared.jvm.juego.arbucies.control.Keyboard
 import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
