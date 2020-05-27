@@ -55,6 +55,19 @@ public class Level {
         }
     }
 
+    public boolean tileCollision(double x, double y, double xa, double ya, int size) {
+        boolean solid = false;
+
+        for (int c = 0; c < 4; c++) {
+            int xt = (((int) x + (int) xa) + c % 2 * size * 2 - 10) >> 4;
+            int yt = (((int) y + (int) ya) + c / 2 * size / 2 + 5) >> 4;
+
+            if (getTile(xt, yt).solid()) solid = true;
+        }
+
+        return solid;
+    }
+
     public void render(int xScroll, int yScroll, Screen screen) {
         screen.setOffset(yScroll, xScroll);
 
@@ -104,6 +117,7 @@ public class Level {
     }
 
     public void add(Projectile p) {
+        p.init(this);
         projectiles.add(p);
     }
 }

@@ -21,6 +21,7 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
 
     override fun update() {
         super.update()
+        if (level.tileCollision(x, y, nx!!, ny!!, 7)) remove()
         move()
     }
 
