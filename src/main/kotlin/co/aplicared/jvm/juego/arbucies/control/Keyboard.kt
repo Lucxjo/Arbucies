@@ -3,7 +3,7 @@ package co.aplicared.jvm.juego.arbucies.control
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 
-class Keyboard : KeyListener {
+open class Keyboard : KeyListener {
     var up = false
     var down = false
     var left = false

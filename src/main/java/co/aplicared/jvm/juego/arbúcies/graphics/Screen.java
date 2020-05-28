@@ -80,6 +80,11 @@ public class Screen {
         }
     }
 
+    public void renderSprite(int xp, int yp, Sprite sprite) {
+        xp -= xOffset;
+        yp -= yOffset;
+    }
+
     public void setOffset(int yOffset, int xOffset) {
         this.yOffset = yOffset;
         this.xOffset = xOffset;
