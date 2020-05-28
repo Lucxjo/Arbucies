@@ -4,11 +4,11 @@ import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbucies.control.Keyboard;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
+import co.aplicared.jvm.juego.arbucies.graphics.PlayerSprites;
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbucies.util.Compass;
 import co.aplicared.jvm.juego.arbúcies.control.Mouse;
-import co.aplicared.jvm.juego.arbúcies.graphics.PlayerSprites;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
-import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
 
 public class Player extends Mob {
 
@@ -78,7 +78,7 @@ public class Player extends Mob {
                 if (anim % 20 > 10) {
                     sprite = PlayerSprites.BACK.sprite();
                 } else {
-                    sprite = PlayerSprites.BACK.altSprite();
+                    sprite = PlayerSprites.BACK.spriteAlt();
                 }
             }
         }
@@ -89,7 +89,7 @@ public class Player extends Mob {
                 if (anim % 20 > 10) {
                     sprite = PlayerSprites.FRONT.sprite();
                 } else {
-                    sprite = PlayerSprites.FRONT.altSprite();
+                    sprite = PlayerSprites.FRONT.spriteAlt();
                 }
             }
         }
@@ -99,7 +99,7 @@ public class Player extends Mob {
                 if (anim % 20 > 10) {
                     sprite = PlayerSprites.RIGHT.sprite();
                 } else {
-                    sprite = PlayerSprites.RIGHT.altSprite();
+                    sprite = PlayerSprites.RIGHT.spriteAlt();
                 }
             }
         }
@@ -109,7 +109,7 @@ public class Player extends Mob {
                 if (anim % 20 > 10) {
                     sprite = PlayerSprites.LEFT.sprite();
                 } else {
-                    sprite = PlayerSprites.LEFT.altSprite();
+                    sprite = PlayerSprites.LEFT.spriteAlt();
                 }
             }
         }

@@ -1,7 +1,7 @@
 package co.aplicared.jvm.juego.arbucies.entity.projectile
 
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbúcies.entity.Entity
-import co.aplicared.jvm.juego.arbúcies.graphics.Sprite
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.math.sqrt

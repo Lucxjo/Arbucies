@@ -1,6 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies.graphics;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbucies.util.Colours;
 import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 
@@ -35,14 +36,14 @@ public class Screen {
         xp -= xOffset;
         yp -= yOffset;
 
-        for (int y = 0; y < tile.sprite.size; y++) {
+        for (int y = 0; y < tile.sprite.getSize(); y++) {
             int ya = y + yp;
-            for (int x = 0; x < tile.sprite.size; x++) {
+            for (int x = 0; x < tile.sprite.getSize(); x++) {
                 int xa = x + xp;
-                if (xa < -tile.sprite.size || xa >= width || ya < -tile.sprite.size || ya >= height) break;
+                if (xa < -tile.sprite.getSize() || xa >= width || ya < -tile.sprite.getSize() || ya >= height) break;
                 if (xa < 0) xa = 0;
                 if (ya < 0) ya = 0;
-                pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.size];
+                pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.getSize()];
             }
         }
     }

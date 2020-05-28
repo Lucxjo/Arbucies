@@ -1,7 +1,7 @@
 package co.aplicared.jvm.juego.arbucies.entity.projectile
 
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
-import co.aplicared.jvm.juego.arbúcies.graphics.Sprite
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -14,7 +14,7 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
         range = random.nextDouble(100.0) + 100.0
         damage = 20.0
         speed = 4.0
-        sprite = Sprite.ballProjectile
+        sprite = Sprite.Projectile.ballProjectile
         nx = speed!!.times(cos(angle))
         ny = speed!!.times(sin(angle))
     }

@@ -1,7 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies.level.tile;
 
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
-import co.aplicared.jvm.juego.arbúcies.graphics.Sprite;
 
 public class WaterTile extends Tile {
     protected WaterTile(Sprite sprite) {
