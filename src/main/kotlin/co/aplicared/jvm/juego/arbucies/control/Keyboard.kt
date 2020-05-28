@@ -5,9 +5,17 @@ import java.awt.event.KeyListener
 
 open class Keyboard : KeyListener {
     var up = false
+        private set
+
     var down = false
+        private set
+
     var left = false
+        private set
+
     var right = false
+        private set
+
     private var keys: BooleanArray = BooleanArray(256)
 
     open fun update() {
