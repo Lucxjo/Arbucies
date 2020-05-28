@@ -1,10 +1,10 @@
 package co.aplicared.jvm.juego.arbúcies.level;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
+import co.aplicared.jvm.juego.arbucies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbucies.util.Colours;
 import co.aplicared.jvm.juego.arbúcies.entity.Entity;
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen;
-import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,17 +99,17 @@ public class Level {
     // Dirt: 0xC7C700
 
     public Tile getTile(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
+        if (x < 0 || y < 0 || x >= width || y >= height) return Tile.Companion.getVoidTile();
 
-        if (tiles[x + y * width] == Colours.TEX_LIGHT_GRASS.RGBA()) return Tile.lightGrassTile;
-        if (tiles[x + y * width] == Colours.TEX_DARK_GRASS.RGBA()) return Tile.darkGrassTile;
-        if (tiles[x + y * width] == Colours.TEX_LIGHT_INFERNO.RGBA()) return Tile.lightInfernoTile;
-        if (tiles[x + y * width] == Colours.TEX_DARK_INFERNO.RGBA()) return Tile.darkInfernoTile;
-        if (tiles[x + y * width] == Colours.TEX_DIRT.RGBA()) return Tile.dirtTile;
-        if (tiles[x + y * width] == Colours.TEX_STONE.RGBA()) return Tile.stoneTile;
-        if (tiles[x + y * width] == Colours.TEX_WATER.RGBA()) return Tile.waterTile;
-        if (tiles[x + y * width] == Colours.PNT_SPAWN.RGBA()) return Tile.dirtTile;
-        else return Tile.voidTile;
+        if (tiles[x + y * width] == Colours.TEX_LIGHT_GRASS.RGBA()) return Tile.Companion.getLightGrassTile();
+        if (tiles[x + y * width] == Colours.TEX_DARK_GRASS.RGBA()) return Tile.Companion.getDarkGrassTile();
+        if (tiles[x + y * width] == Colours.TEX_LIGHT_INFERNO.RGBA()) return Tile.Companion.getLightInfernoTile();
+        if (tiles[x + y * width] == Colours.TEX_DARK_INFERNO.RGBA()) return Tile.Companion.getDarkInfernoTile();
+        if (tiles[x + y * width] == Colours.TEX_DIRT.RGBA()) return Tile.Companion.getDirtTile();
+        if (tiles[x + y * width] == Colours.TEX_STONE.RGBA()) return Tile.Companion.getStoneTile();
+        if (tiles[x + y * width] == Colours.TEX_WATER.RGBA()) return Tile.Companion.getWaterTile();
+        if (tiles[x + y * width] == Colours.PNT_SPAWN.RGBA()) return Tile.Companion.getDirtTile();
+        else return Tile.Companion.getVoidTile();
     }
 
     public void add(Entity e) {

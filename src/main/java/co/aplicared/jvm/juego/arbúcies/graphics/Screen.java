@@ -2,11 +2,13 @@ package co.aplicared.jvm.juego.arbúcies.graphics;
 
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
+import co.aplicared.jvm.juego.arbucies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbucies.util.Colours;
-import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 
 import java.util.Arrays;
 import java.util.Random;
+
+//import co.aplicared.jvm.juego.arbúcies.level.tile.Tile;
 
 public class Screen {
     public int width, height;
@@ -36,14 +38,15 @@ public class Screen {
         xp -= xOffset;
         yp -= yOffset;
 
-        for (int y = 0; y < tile.sprite.getSize(); y++) {
+        for (int y = 0; y < tile.getSprite().getSize(); y++) {
             int ya = y + yp;
-            for (int x = 0; x < tile.sprite.getSize(); x++) {
+            for (int x = 0; x < tile.getSprite().getSize(); x++) {
                 int xa = x + xp;
-                if (xa < -tile.sprite.getSize() || xa >= width || ya < -tile.sprite.getSize() || ya >= height) break;
+                if (xa < -tile.getSprite().getSize() || xa >= width || ya < -tile.getSprite().getSize() || ya >= height)
+                    break;
                 if (xa < 0) xa = 0;
                 if (ya < 0) ya = 0;
-                pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.getSize()];
+                pixels[xa + ya * width] = tile.getSprite().pixels[x + y * tile.getSprite().getSize()];
             }
         }
     }
