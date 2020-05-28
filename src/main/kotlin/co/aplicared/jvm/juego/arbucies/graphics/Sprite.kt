@@ -1,12 +1,21 @@
 package co.aplicared.jvm.juego.arbucies.graphics
 
-class Sprite(val size: Int) {
+class Sprite {
     var sheet: SpriteSheet? = null
     var xCoord: Int? = null
     var yCoord: Int? = null
+    var size: Int? = null
+
+    var width: Int? = null
+        private set
+
+    var height: Int? = null
+        private set
+
     lateinit var pixels: IntArray
 
-    constructor(size: Int, xCoord: Int, yCoord: Int, sheet: SpriteSheet) : this(size) {
+    constructor(size: Int, xCoord: Int, yCoord: Int, sheet: SpriteSheet) {
+        this.size = size
         this.xCoord = xCoord * size
         this.yCoord = yCoord * size
         this.sheet = sheet
@@ -14,21 +23,35 @@ class Sprite(val size: Int) {
         load()
     }
 
-    constructor(size: Int, colour: Int) : this(size) {
+    constructor(size: Int, colour: Int) {
+        this.size = size
         pixels = IntArray(size * size)
         setColour(colour)
     }
 
+    constructor(width: Int, height: Int, colour: Int) {
+        this.width = width
+        this.height = height
+        pixels = IntArray(width * height)
+        setColour(colour)
+    }
+
     private fun setColour(colour: Int) {
-        for (i in 0 until size) {
-            pixels[i] = colour
+        if (size != null) {
+            for (i in 0 until size!!) {
+                pixels[i] = colour
+            }
+        } else {
+            for (i in 0 until width!! * height!!) {
+                pixels[i] = colour
+            }
         }
     }
 
     private fun load() {
-        for (y in 0 until size) {
-            for (x in 0 until size) {
-                pixels[x + y * size] = sheet!!.pixels[(x + xCoord!!) + (y + yCoord!!) * sheet!!.size]
+        for (y in 0 until size!!) {
+            for (x in 0 until size!!) {
+                pixels[x + y * size!!] = sheet!!.pixels[(x + xCoord!!) + (y + yCoord!!) * sheet!!.size]
             }
         }
     }

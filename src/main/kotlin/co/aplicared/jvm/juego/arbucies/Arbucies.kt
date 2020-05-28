@@ -1,6 +1,7 @@
 package co.aplicared.jvm.juego.arbucies
 
 import co.aplicared.jvm.juego.arbucies.control.Keyboard
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbucies.level.TileCoord
 import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player
@@ -77,7 +78,7 @@ class Arbucies : Canvas(), Runnable {
         var ticks = 0
         requestFocus()
         while (_isRunning) {
-            var now = System.nanoTime()
+            val now = System.nanoTime()
             delta += (now - lastTime) / ns
             lastTime = now
 
@@ -116,6 +117,9 @@ class Arbucies : Canvas(), Runnable {
 
         _level.render(xScroll.toInt(), yScroll.toInt(), _screen)
         _player.render(_screen)
+
+        val sprite: Sprite = Sprite(40, aHeight, 0xFFFFFF)
+        _screen.renderSprite(0, 0, sprite, false)
 
         for (i in _pixels.indices) {
             _pixels[i] = _screen.pixels[i]

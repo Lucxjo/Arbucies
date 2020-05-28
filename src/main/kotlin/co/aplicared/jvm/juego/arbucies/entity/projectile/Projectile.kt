@@ -28,7 +28,7 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     protected open fun move() {}
 
     fun getSpriteSize(): Int {
-        return sprite.size
+        return sprite.size!!
     }
 
     protected open fun distance(): Double {
