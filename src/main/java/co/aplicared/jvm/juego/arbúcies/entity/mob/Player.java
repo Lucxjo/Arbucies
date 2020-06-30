@@ -25,8 +25,8 @@ public class Player extends Mob {
     }
 
     public Player(int x, int y, Keyboard input) {
-        this.x = x + 0.0;
-        this.y = y + 0.0;
+        this.x = x;
+        this.y = y;
         this.input = input;
         this.sprite = PlayerSprites.BACK.sprite();
         fireRate = WizardProjectile.Companion.getFIRE_RATE();
@@ -65,7 +65,7 @@ public class Player extends Mob {
             double dx = Mouse.getMouseX() - (Arbucies.Companion.getWindowWidth() >> 1);
             double dy = Mouse.getMouseY() - (Arbucies.Companion.getWindowHeight() >> 1);
             double pDir = Math.atan2(dy, dx);
-            shoot(x.intValue(), y.intValue(), pDir);
+            shoot(x, y, pDir);
             fireRate = WizardProjectile.Companion.getFIRE_RATE();
         }
     }
@@ -114,6 +114,6 @@ public class Player extends Mob {
             }
         }
 
-        screen.renderPlayer((int) (x - 16), (int) (y - 16), sprite);
+        screen.renderPlayer(x - 16, y - 16, sprite);
     }
 }

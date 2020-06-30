@@ -3,13 +3,12 @@ package co.aplicared.jvm.juego.arbucies.entity.projectile
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbúcies.entity.Entity
 import kotlin.math.abs
-import kotlin.math.roundToInt
 import kotlin.math.sqrt
 import kotlin.random.Random
 
-abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
-    protected val xOrigin: Int = x.roundToInt()
-    protected val yOrigin: Int = y.roundToInt()
+abstract class Projectile(x: Int, y: Int, dir: Double) : Entity() {
+    protected val xOrigin: Int = x
+    protected val yOrigin: Int = y
     protected var angle: Double = dir
     lateinit var sprite: Sprite
     protected var nx: Double? = null
@@ -32,6 +31,6 @@ abstract class Projectile(x: Double, y: Double, dir: Double) : Entity() {
     }
 
     protected open fun distance(): Double {
-        return abs(sqrt(((xOrigin - x) * (xOrigin - x)) + ((yOrigin - y) * (yOrigin - y))))
+        return abs(sqrt((((xOrigin - x) * (xOrigin - x)) + ((yOrigin - y) * (yOrigin - y))).toDouble()))
     }
 }

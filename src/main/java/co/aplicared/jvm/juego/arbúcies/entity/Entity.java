@@ -6,7 +6,7 @@ import co.aplicared.jvm.juego.arbúcies.level.Level;
 public abstract class Entity {
 
     //protected final Random random = new Random();
-    public Double x, y;
+    public int x, y;
     protected Level level;
     private boolean _isRemoved = false;
 

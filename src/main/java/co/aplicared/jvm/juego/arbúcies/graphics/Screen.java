@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies.graphics;
 
+import co.aplicared.jvm.juego.arbucies.Arbucies;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
 import co.aplicared.jvm.juego.arbucies.level.tile.Tile;
@@ -89,13 +90,17 @@ public class Screen {
             xp -= xOffset;
             yp -= yOffset;
         }
-        for (int y = 0; y < sprite.getHeight(); y++) {
-            int ya = y + yp;
-            for (int x = 0; x < sprite.getWidth(); x++) {
-                int xa = x + xp;
-                if (xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
-                pixels[xa + y * width] = sprite.pixels[x + y * sprite.getWidth()];
+        if (sprite != null) {
+            for (int y = 0; y < sprite.getHeight(); y++) {
+                int ya = y + yp;
+                for (int x = 0; x < sprite.getWidth(); x++) {
+                    int xa = x + xp;
+                    if (xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
+                    pixels[xa + y * width] = sprite.pixels[x + y * sprite.getWidth()];
+                }
             }
+        } else {
+            Arbucies.Companion.getLog().severe("No Sprite");
         }
     }
 
