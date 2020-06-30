@@ -3,9 +3,10 @@ package co.aplicared.jvm.juego.arbucies.entity.projectile
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbúcies.graphics.Screen
 import kotlin.math.cos
+import kotlin.math.roundToInt
 import kotlin.math.sin
 
-class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir) {
+class WizardProjectile(x: Int, y: Int, dir: Double) : Projectile(x, y, dir) {
     companion object {
         var FIRE_RATE = 15
     }
@@ -21,14 +22,14 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
 
     override fun update() {
         super.update()
-        if (level.tileCollision(x, y, nx!!, ny!!, 7)) remove()
+        if (level.tileCollision(x.toDouble(), y.toDouble(), nx!!, ny!!, 7)) remove()
         move()
     }
 
     override fun move() {
         super.move()
-        x = x.plus(nx!!)
-        y = y.plus(ny!!)
+        x = x.plus(nx!!).roundToInt()
+        y = y.plus(ny!!).roundToInt()
         if (distance() > range!!) {
             remove()
         }
@@ -36,6 +37,6 @@ class WizardProjectile(x: Double, y: Double, dir: Double) : Projectile(x, y, dir
 
     override fun render(screen: Screen?) {
         super.render(screen)
-        screen?.renderProjectile(x.toInt() - 12, y.toInt() - 2, this)
+        screen?.renderProjectile(x - 12, y - 2, this)
     }
 }

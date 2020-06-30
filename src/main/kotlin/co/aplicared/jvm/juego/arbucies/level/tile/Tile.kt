@@ -4,6 +4,7 @@ import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.birchWoodSprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.brickSprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.crackedStoneSprite
+import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.darkGrassSprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.darkInfernoSprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.dirtSprite
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite.Tiles.lightGrassSprite
@@ -19,6 +20,7 @@ abstract class Tile(val sprite: Sprite) {
     protected var y: Int? = null
 
     open fun render(x: Int, y: Int, screen: Screen) {
+        screen.renderTile(x shl 4, y shl 4, this)
     }
 
     open fun solid(): Boolean {
@@ -32,7 +34,7 @@ abstract class Tile(val sprite: Sprite) {
     companion object {
         // Non-Solid Tiles
         var lightGrassTile: Tile = GrassTile(lightGrassSprite)
-        var darkGrassTile: Tile = GrassTile(lightGrassSprite)
+        var darkGrassTile: Tile = GrassTile(darkGrassSprite)
         var lightInfernoTile: Tile = GrassTile(lightInfernoSprite)
         var darkInfernoTile: Tile = GrassTile(darkInfernoSprite)
         var dirtTile: Tile = GrassTile(dirtSprite)

@@ -1,7 +1,6 @@
 package co.aplicared.jvm.juego.arbucies
 
 import co.aplicared.jvm.juego.arbucies.control.Keyboard
-import co.aplicared.jvm.juego.arbucies.graphics.Sprite
 import co.aplicared.jvm.juego.arbucies.level.TileCoord
 import co.aplicared.jvm.juego.arbúcies.control.Mouse
 import co.aplicared.jvm.juego.arbúcies.entity.mob.Player
@@ -15,13 +14,13 @@ import java.util.logging.Logger
 import javax.swing.JFrame
 
 class Arbucies : Canvas(), Runnable {
-    val serialVersionUID = 1L
 
     companion object {
         const val title = "Arbúcies"
         const val aWidth = 400
         const val aHeight = aWidth / 16 * 10
         const val scale = 3
+        const val serialVersionUID: Long = 1L
 
         val log: Logger = Logger.getLogger("Arbúcies")
 
@@ -117,9 +116,6 @@ class Arbucies : Canvas(), Runnable {
 
         _level.render(xScroll.toInt(), yScroll.toInt(), _screen)
         _player.render(_screen)
-
-        val sprite: Sprite = Sprite(40, aHeight, 0xFFFFFF)
-        _screen.renderSprite(0, 0, sprite, false)
 
         for (i in _pixels.indices) {
             _pixels[i] = _screen.pixels[i]

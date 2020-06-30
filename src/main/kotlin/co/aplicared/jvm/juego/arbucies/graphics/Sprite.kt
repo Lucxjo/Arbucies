@@ -25,6 +25,8 @@ class Sprite {
 
     constructor(size: Int, colour: Int) {
         this.size = size
+        this.height = size
+        this.width = size
         pixels = IntArray(size * size)
         setColour(colour)
     }
@@ -91,5 +93,9 @@ class Sprite {
 
     object Projectile {
         var ballProjectile = Sprite(16, 0, 0, SpriteSheet.projectile)
+    }
+
+    object Particle {
+        val particleNormal = Sprite(3, 0xAAAAAA)
     }
 }

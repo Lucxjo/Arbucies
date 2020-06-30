@@ -1,5 +1,6 @@
 package co.aplicared.jvm.juego.arbúcies.entity.mob;
 
+import co.aplicared.jvm.juego.arbucies.entity.particle.Particle;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.WizardProjectile;
 import co.aplicared.jvm.juego.arbucies.graphics.Sprite;
@@ -26,13 +27,16 @@ public abstract class Mob extends Entity {
         if (!collision(xa, ya)) {
             x += xa;
             y += ya;
+        } else {
+            Particle p = new Particle(x, y, 50);
+            level.add(p);
         }
     }
 
     public void update() {
     }
 
-    protected void shoot(int pX, int pY, double dir) {
+    protected void shoot(int x, int y, double dir) {
         Projectile p = new WizardProjectile(x, y, dir);
         level.getProjectiles().add(p);
         level.add(p);
@@ -42,8 +46,8 @@ public abstract class Mob extends Entity {
         boolean solid = false;
 
         for (int c = 0; c < 4; c++) {
-            int xt = (int) ((x + xa) + ((c % 2) * 12) - 8) >> 4;
-            int yt = (int) ((y + ya) + ((c >> 1) * 16) - 1) >> 4;
+            int xt = ((x + xa) + ((c % 2) * 12) - 8) >> 4;
+            int yt = ((y + ya) + ((c >> 1) * 16) - 1) >> 4;
 
             if (level.getTile(xt, yt).solid()) solid = true;
         }

@@ -1,5 +1,7 @@
 package co.aplicared.jvm.juego.arbúcies.level;
 
+import co.aplicared.jvm.juego.arbucies.entity.Emitter;
+import co.aplicared.jvm.juego.arbucies.entity.particle.Particle;
 import co.aplicared.jvm.juego.arbucies.entity.projectile.Projectile;
 import co.aplicared.jvm.juego.arbucies.level.tile.Tile;
 import co.aplicared.jvm.juego.arbucies.util.Colours;
@@ -15,8 +17,8 @@ public class Level {
     protected int[] tiles;
 
     private final List<Entity> entities = new ArrayList<>();
-
     private final List<Projectile> projectiles = new ArrayList<>();
+    private final List<Particle> particles = new ArrayList<>();
 
     public List<Projectile> getProjectiles() {
         return projectiles;
@@ -34,6 +36,7 @@ public class Level {
     public Level(String path) {
         loadLevel(path);
         generateLevel();
+        add(new Emitter(16 * 16, 62 * 16, Emitter.Type.PARTICLE, 50, this));
     }
 
     protected void generateLevel() {
@@ -52,6 +55,10 @@ public class Level {
 
         for (Projectile projectile : projectiles) {
             projectile.update();
+        }
+
+        for (Particle particle : particles) {
+            particle.update();
         }
     }
 
@@ -89,6 +96,10 @@ public class Level {
         for (Projectile projectile : projectiles) {
             projectile.render(screen);
         }
+
+        for (Particle particle : particles) {
+            particle.update();
+        }
     }
 
     // Light Grass: 0xFF0000
@@ -113,11 +124,13 @@ public class Level {
     }
 
     public void add(Entity e) {
-        entities.add(e);
-    }
-
-    public void add(Projectile p) {
-        p.init(this);
-        projectiles.add(p);
+        e.init(this);
+        if (e instanceof Particle) {
+            particles.add((Particle) e);
+        } else if (e instanceof Projectile) {
+            projectiles.add((Projectile) e);
+        } else {
+            entities.add(e);
+        }
     }
 }
