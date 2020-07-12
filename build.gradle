@@ -11,7 +11,7 @@ plugins {
 
 group 'co.aplicared.jvm.juego.arbucies'
 version '0.01'
-sourceCompatibility = 1.8
+compileJava.sourceCompatibility = compileJava.targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
