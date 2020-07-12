@@ -14,4 +14,10 @@ class Screen(private val width: Int, private val height: Int) {
             }
         }
     }
+    
+    fun clear() {
+        for (i in pixels.indices) {
+            pixels[i] = 0
+        }
+    }
 }

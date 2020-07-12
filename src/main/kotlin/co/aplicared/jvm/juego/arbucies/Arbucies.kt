@@ -95,6 +95,7 @@ class Arbucies : Runnable, Canvas() {
             return
         }
     
+        screen.clear()
         screen.render()
     
         for (i in pixels.indices) {
