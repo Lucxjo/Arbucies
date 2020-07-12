@@ -2,8 +2,13 @@
  * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
  */
 
+/*
+ * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
+ */
+
 package co.aplicared.jvm.juego.arbucies
 
+import co.aplicared.jvm.juego.arbucies.graphics.Screen
 import java.awt.*
 import java.awt.image.*
 import javax.swing.JFrame
@@ -22,13 +27,17 @@ class Arbucies : Runnable, Canvas() {
     val frame: JFrame
     private var running = false
     
+    private val screen: Screen
+    
     private val image = BufferedImage(aWidth, aHeight, BufferedImage.TYPE_INT_RGB)
     private var pixels = (image.raster.dataBuffer as DataBufferInt).data
     
     init {
         val size = Dimension(aWidth * scale, aHeight * scale)
-        frame = JFrame()
         preferredSize = size
+        
+        frame = JFrame()
+        screen = Screen(aWidth, aHeight)
     }
     
     @Synchronized
