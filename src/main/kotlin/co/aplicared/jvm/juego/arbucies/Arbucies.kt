@@ -1,8 +1,11 @@
+/*
+ * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
+ */
+
 package co.aplicared.jvm.juego.arbucies
 
-import java.awt.Canvas
-import java.awt.Color
-import java.awt.Dimension
+import java.awt.*
+import java.awt.image.*
 import javax.swing.JFrame
 
 class Arbucies : Runnable, Canvas() {
@@ -10,21 +13,24 @@ class Arbucies : Runnable, Canvas() {
     companion object {
         private const val serialVersionUID: Long = 1
     }
-
+    
     val aWidth = 300
     val aHeight = aWidth / 16 * 10
     val scale = 3
-
+    
     lateinit var thread: Thread
     val frame: JFrame
     private var running = false
-
+    
+    private val image = BufferedImage(aWidth, aHeight, BufferedImage.TYPE_INT_RGB)
+    private var pixels = (image.raster.dataBuffer as DataBufferInt).data
+    
     init {
         val size = Dimension(aWidth * scale, aHeight * scale)
         frame = JFrame()
         preferredSize = size
     }
-
+    
     @Synchronized
     fun start() {
         running = true
