@@ -6,6 +6,10 @@
  * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
  */
 
+/*
+ * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
+ */
+
 package co.aplicared.jvm.juego.arbucies
 
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
@@ -72,10 +76,15 @@ class Arbucies : Runnable, Canvas() {
             createBufferStrategy(3)
             return
         }
-
+    
+        screen.render()
+    
+        for (i in pixels.indices) {
+            pixels[i] = screen.pixels[i]
+        }
+    
         val g = bs.drawGraphics
-        g.color = Color.CYAN
-        g.fillRect(0, 0, width, height)
+        g.drawImage(image, 0, 0, width, height, null)
         g.dispose()
         bs.show()
     }
