@@ -2,14 +2,6 @@
  * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
  */
 
-/*
- * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
- */
-
-/*
- * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
- */
-
 package co.aplicared.jvm.juego.arbucies
 
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
@@ -62,10 +54,36 @@ class Arbucies : Runnable, Canvas() {
     }
 
     override fun run() {
+        var lastTime: Long = System.nanoTime()
+        var timer: Long = System.currentTimeMillis()
+        val ns: Double = 1000000000.0 / 60.0
+        var delta = 0.0
+        var frames = 0
+        var ticks = 0
+    
         while (running) {
-            tick()
+            val now = System.nanoTime()
+            delta += (now - lastTime) / ns
+            lastTime = now
+        
+            while (delta >= 1) {
+                tick()
+                ticks++
+                delta--
+            }
+        
             render()
+            frames++
+        
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000
+                frame.title = "Arbúcies (K) || TPS: $ticks | FPS: $frames"
+                ticks = 0
+                frames = 0
+            }
         }
+    
+        stop()
     }
 
     fun tick() {}
