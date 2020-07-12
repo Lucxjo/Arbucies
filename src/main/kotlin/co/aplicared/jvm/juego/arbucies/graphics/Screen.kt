@@ -10,6 +10,7 @@ class Screen(private val width: Int, private val height: Int) {
     fun render() {
         for (y in 0 until height) {
             for (x in 0 until width) {
+                if (y >= height || x >= width) break
                 pixels[x + y * width] = 0xff00ff
             }
         }
