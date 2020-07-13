@@ -7,22 +7,26 @@ package co.aplicared.jvm.juego.arbucies.graphics
 import kotlin.random.Random
 
 class Screen(private val width: Int, private val height: Int) {
+    val mapSize = 8
+    val mapSizeMask = mapSize - 1
     var pixels = IntArray(width * height)
-    var tiles = IntArray(64 * 64)
+    var tiles = IntArray(mapSize * mapSize)
     
     private val random = Random
     
     init {
-        for (i in 0 until 64 * 64) {
+        for (i in 0 until mapSize * mapSize) {
             tiles[i] = random.nextInt(0xffffff)
         }
     }
     
     fun render() {
         for (y in 0 until height) {
+            var yy = y
             for (x in 0 until width) {
-                if (y >= height || x >= width || y < 0 || x < 0) break
-                val tileIndex = (x shr 4) + (y shr 4) * 64
+                var xx = x
+                if (yy >= height || xx >= width || yy < 0 || xx < 0) break
+                val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
                 pixels[x + y * width] = tiles[tileIndex]
             }
         }

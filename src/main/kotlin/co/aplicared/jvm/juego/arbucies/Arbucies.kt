@@ -4,6 +4,7 @@
 
 package co.aplicared.jvm.juego.arbucies
 
+import co.aplicared.jvm.juego.arbucies.control.Keyboard
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
 import java.awt.*
 import java.awt.image.*
@@ -24,6 +25,7 @@ class Arbucies : Runnable, Canvas() {
     private var running = false
     
     private val screen: Screen
+    private val key: Keyboard
     
     private val image = BufferedImage(aWidth, aHeight, BufferedImage.TYPE_INT_RGB)
     private var pixels = (image.raster.dataBuffer as DataBufferInt).data
@@ -31,9 +33,12 @@ class Arbucies : Runnable, Canvas() {
     init {
         val size = Dimension(aWidth * scale, aHeight * scale)
         preferredSize = size
-        
+    
         frame = JFrame()
         screen = Screen(aWidth, aHeight)
+        key = Keyboard()
+    
+        addKeyListener(key)
     }
     
     @Synchronized
@@ -85,16 +90,18 @@ class Arbucies : Runnable, Canvas() {
     
         stop()
     }
-
-    fun tick() {}
-
+    
+    fun tick() {
+        key.update()
+    }
+    
     fun render() {
         val bs = bufferStrategy
         if (bs == null) {
             createBufferStrategy(3)
             return
         }
-    
+        
         screen.clear()
         screen.render()
     
