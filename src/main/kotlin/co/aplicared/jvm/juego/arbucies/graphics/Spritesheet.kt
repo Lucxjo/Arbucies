@@ -7,7 +7,7 @@ package co.aplicared.jvm.juego.arbucies.graphics
 import java.io.IOException
 import javax.imageio.ImageIO
 
-class Spritesheet(private var path: String, private val size: Int) {
+class Spritesheet(private var path: String, val size: Int) {
     var pixels = IntArray(size * size)
     
     init {
