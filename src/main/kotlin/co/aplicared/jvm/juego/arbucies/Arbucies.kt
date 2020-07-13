@@ -11,7 +11,7 @@ import java.awt.image.*
 import javax.swing.JFrame
 
 class Arbucies : Runnable, Canvas() {
-
+    
     companion object {
         private const val serialVersionUID: Long = 1
     }
@@ -19,6 +19,9 @@ class Arbucies : Runnable, Canvas() {
     val aWidth = 300
     val aHeight = aWidth / 16 * 10
     val scale = 3
+    
+    var xO = 0
+    var yO = 0
     
     lateinit var thread: Thread
     val frame: JFrame
@@ -65,6 +68,7 @@ class Arbucies : Runnable, Canvas() {
         var delta = 0.0
         var frames = 0
         var ticks = 0
+        requestFocus()
     
         while (running) {
             val now = System.nanoTime()
@@ -93,6 +97,10 @@ class Arbucies : Runnable, Canvas() {
     
     fun tick() {
         key.update()
+        if (key.up) yO--
+        if (key.down) yO++
+        if (key.left) xO--
+        if (key.right) xO++
     }
     
     fun render() {
@@ -101,9 +109,9 @@ class Arbucies : Runnable, Canvas() {
             createBufferStrategy(3)
             return
         }
-        
+    
         screen.clear()
-        screen.render()
+        screen.render(xO, yO)
     
         for (i in pixels.indices) {
             pixels[i] = screen.pixels[i]

@@ -20,12 +20,11 @@ class Screen(private val width: Int, private val height: Int) {
         }
     }
     
-    fun render() {
+    fun render(xOffset: Int, yOffset: Int) {
         for (y in 0 until height) {
-            var yy = y
+            var yy = y + yOffset
             for (x in 0 until width) {
-                var xx = x
-                if (yy >= height || xx >= width || yy < 0 || xx < 0) break
+                var xx = x + xOffset
                 val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
                 pixels[x + y * width] = tiles[tileIndex]
             }

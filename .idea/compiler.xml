@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="14" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xplugin:Manifold  -processorpath $USER_HOME$/.gradle/caches/modules-2/files-2.1/systems.manifold/manifold-all/2019.1.23/f90f30d87d6e82245ccb09ea128c4f627e964240/manifold-all-2019.1.23.jar" />
