@@ -4,6 +4,7 @@
 
 package co.aplicared.jvm.juego.arbucies.graphics
 
+import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprites
 import kotlin.random.Random
 
 class Screen(private val width: Int, private val height: Int) {
@@ -26,7 +27,7 @@ class Screen(private val width: Int, private val height: Int) {
             for (x in 0 until width) {
                 var xx = x + xOffset
                 val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
-                pixels[x + y * width] = tiles[tileIndex]
+                pixels[x + y * width] = Sprites.GRASS.get().pixels[(x and 15) + (y and 15) * Sprites.GRASS.get().size]
             }
         }
     }

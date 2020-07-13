@@ -1,8 +1,7 @@
 /*
  * Copyright (c) 2020 Ludoviko (Louis Hollingworth). This file is subject to the GNU GPL V3.0
  */
-
-package co.aplicared.jvm.juego.arbucies.graphics
+package co.aplicared.jvm.juego.arbucies.graphics.draw
 
 import java.io.IOException
 import javax.imageio.ImageIO
