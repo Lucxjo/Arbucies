@@ -7,14 +7,8 @@ package co.aplicared.jvm.juego.arbucies.level.tile
 import co.aplicared.jvm.juego.arbucies.graphics.Screen
 import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprite
 
-open class Tile(var sprite: Sprite) {
-    var x: Int? = null
-    var y: Int? = null
-    
-    open fun render(x: Int, y: Int, screen: Screen) {
-    }
-    
-    fun solid(): Boolean {
-        return false
+class GrassTile(sprite: Sprite) : Tile(sprite) {
+    override fun render(x: Int, y: Int, screen: Screen) {
+        TODO("Do render stuff here.")
     }
 }

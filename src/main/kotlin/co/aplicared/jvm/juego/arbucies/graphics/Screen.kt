@@ -5,6 +5,7 @@
 package co.aplicared.jvm.juego.arbucies.graphics
 
 import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprites
+import co.aplicared.jvm.juego.arbucies.level.tile.Tile
 import kotlin.random.Random
 
 class Screen(private val width: Int, private val height: Int) {
@@ -31,6 +32,17 @@ class Screen(private val width: Int, private val height: Int) {
                 pixels[xx + yy * width] = Sprites.GRASS.get().pixels[(x and 15) + (y and 15) * Sprites
                     .GRASS.get()
                     .size]
+            }
+        }
+    }
+    
+    fun renderTile(xp: Int, yp: Int, tile: Tile) {
+        for (y in 0 until tile.sprite.size) {
+            val ya = y + yp
+            for (x in 0 until tile.sprite.size) {
+                val xa = x + xp
+                if (xa < 0 || ya < 0 || xa >= width || ya >= height) break
+                pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.size]
             }
         }
     }
