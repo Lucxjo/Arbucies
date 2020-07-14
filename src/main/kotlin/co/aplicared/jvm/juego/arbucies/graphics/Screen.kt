@@ -23,11 +23,14 @@ class Screen(private val width: Int, private val height: Int) {
     
     fun render(xOffset: Int, yOffset: Int) {
         for (y in 0 until height) {
-            var yy = y + yOffset
+            val yy = y + yOffset
+            if (yy < 0 || yy >= height) continue
             for (x in 0 until width) {
-                var xx = x + xOffset
-                val tileIndex = ((xx shr 4) and mapSizeMask) + ((yy shr 4) and mapSizeMask) * mapSize
-                pixels[x + y * width] = Sprites.GRASS.get().pixels[(x and 15) + (y and 15) * Sprites.GRASS.get().size]
+                val xx = x + xOffset
+                if (xx < 0 || xx >= width) continue
+                pixels[xx + yy * width] = Sprites.GRASS.get().pixels[(x and 15) + (y and 15) * Sprites
+                    .GRASS.get()
+                    .size]
             }
         }
     }
