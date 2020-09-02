@@ -14,7 +14,7 @@ open class Tile(var sprite: Sprite) {
     open fun render(x: Int, y: Int, screen: Screen) {
     }
     
-    fun solid(): Boolean {
+    open fun solid(): Boolean {
         return false
     }
 }

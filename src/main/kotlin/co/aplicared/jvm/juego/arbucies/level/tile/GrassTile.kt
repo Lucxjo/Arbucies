@@ -9,6 +9,6 @@ import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprite
 
 class GrassTile(sprite: Sprite) : Tile(sprite) {
     override fun render(x: Int, y: Int, screen: Screen) {
-        TODO("Do render stuff here.")
+        screen.renderTile(x, y, this)
     }
 }
