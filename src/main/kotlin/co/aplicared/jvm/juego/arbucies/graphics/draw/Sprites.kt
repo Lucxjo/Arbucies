@@ -12,7 +12,8 @@ enum class Sprites(private val sprite: Sprite) {
             0,
             Spritesheets.TERRAIN.get()
         )
-    );
+    ),
+    VOID(Sprite(16, 0));
     
     fun get(): Sprite {
         return sprite

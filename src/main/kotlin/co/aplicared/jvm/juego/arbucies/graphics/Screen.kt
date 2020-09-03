@@ -8,7 +8,7 @@ import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprites
 import co.aplicared.jvm.juego.arbucies.level.tile.Tile
 import kotlin.random.Random
 
-class Screen(private val width: Int, private val height: Int) {
+class Screen(val width: Int, val height: Int) {
     val mapSize = 8
     val mapSizeMask = mapSize - 1
     var pixels = IntArray(width * height)

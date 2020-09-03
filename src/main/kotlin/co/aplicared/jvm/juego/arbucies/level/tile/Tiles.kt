@@ -7,7 +7,8 @@ package co.aplicared.jvm.juego.arbucies.level.tile
 import co.aplicared.jvm.juego.arbucies.graphics.draw.Sprites
 
 enum class Tiles(private val tile: Tile) {
-    GRASS(GrassTile(Sprites.GRASS.get()));
+    GRASS(GrassTile(Sprites.GRASS.get())),
+    VOID(VoidTile(Sprites.VOID.get()));
     
     fun get(): Tile {
         return tile
