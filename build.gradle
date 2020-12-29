@@ -1,5 +1,14 @@
 import java.text.SimpleDateFormat
 
+buildscript {
+    repositories {
+        flatDir dirs: '/Volumes/Development/SDK/proguard-7.0.0/lib'
+    }
+    dependencies {
+        classpath ':proguard'
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
